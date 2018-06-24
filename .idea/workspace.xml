@@ -2,13 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="34085811-7e63-4229-b98b-49b7d3107653" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/brightness2-service.js" beforeDir="false" afterPath="$PROJECT_DIR$/brightness2-service.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/humidity-service.js" beforeDir="false" afterPath="$PROJECT_DIR$/humidity1-service.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/led1-service.js" beforeDir="false" afterPath="$PROJECT_DIR$/led1-service.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/led2-service.js" beforeDir="false" afterPath="$PROJECT_DIR$/led2-service.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/temperature1-service.js" beforeDir="false" afterPath="$PROJECT_DIR$/temperature1-service.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/temperature2-service.js" beforeDir="false" afterPath="$PROJECT_DIR$/temperature2-service.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -58,11 +52,23 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="led1-service.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="led1-service.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/led1-service.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="51">
               <caret line="3" column="44" selection-start-line="3" selection-start-column="44" selection-end-line="3" selection-end-column="44" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="34">
+                <caret line="2" column="146" selection-start-line="2" selection-start-column="146" selection-end-line="2" selection-end-column="146" />
+              </first_editor>
+              <second_editor />
             </state>
           </provider>
         </entry>
@@ -108,6 +114,7 @@
         <option value="$PROJECT_DIR$/temperature2-service.js" />
         <option value="$PROJECT_DIR$/brightness2-service.js" />
         <option value="$PROJECT_DIR$/led1-service.js" />
+        <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
   </component>
@@ -187,8 +194,8 @@
     </packageJsonPaths>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="885" />
-    <option name="width" value="1035" />
+    <option name="x" value="644" />
+    <option name="width" value="1276" />
     <option name="height" value="1041" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -244,12 +251,12 @@
       <workItem from="1529838504944" duration="3739000" />
       <workItem from="1529848845479" duration="1861000" />
       <workItem from="1529851253573" duration="2398000" />
-      <workItem from="1529855794419" duration="4206000" />
+      <workItem from="1529855794419" duration="4756000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="14807000" />
+    <option name="totallyTimeSpent" value="15357000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -261,17 +268,17 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="885" y="0" width="1035" height="1041" extended-state="0" />
+    <frame x="644" y="0" width="1276" height="1041" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19057171" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15347335" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32897604" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Terminal" order="7" visible="true" weight="0.33333334" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.33333334" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -399,6 +406,16 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
           <caret line="3" column="44" selection-start-line="3" selection-start-column="44" selection-end-line="3" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="34">
+            <caret line="2" column="146" selection-start-line="2" selection-start-column="146" selection-end-line="2" selection-end-column="146" />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>
