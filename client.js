@@ -11,18 +11,22 @@ setInterval(() => {
 
     let req_temp1 = {type: 'temperature 1', id: id++};
     let req_temp2 = {type: 'temperature 2', id: id++};
-
-    let req_humid1 = {type: 'humidity 1', id: id++}
+    let req_humid1 = {type: 'humidity 1', id: id++};
+    let req_brigth2 = {type: 'brightness 2', id: id++};
 
     client.send(req_humid1, (humidity) => {
         console.log(`humidity 1 is ${humidity}%`);
-    })
+    });
+
+    client.send(req_brigth2, (brightness) => {
+        console.log(`brightness 2 is ${brightness} lux`);
+    });
 
     client.send(req_temp1, (temperature) => {
         console.log(`temperature 1 is ${temperature}°`);
-    })
+    });
 
     client.send(req_temp2, (temperature) => {
         console.log(`temperature 2 is ${temperature}°`);
-    })
+    });
 }, 1000);
