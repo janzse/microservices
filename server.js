@@ -18,7 +18,7 @@ io.on('connection', function (socket) {
 app.get('/', function (req, res) {
     res.sendFile('./index.js', {root: __dirname});
 });
-*/
+
  // Make sure this returns the socketio
 
 //app.set('socketIo', io);
@@ -38,3 +38,4 @@ io.sockets.on('connection', function(socket){
 module.exports = app;
 
 console.log("HTTP-Server is running on", "http://localhost:4811");
+*/
