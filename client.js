@@ -41,3 +41,7 @@ setInterval(() => {
     });
 
 }, 1000);
+
+module.exports = {
+    "setInterval": setInterval
+}
