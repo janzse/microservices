@@ -1,5 +1,3 @@
-import routes from "./routes";
-
 const app = require('express')();
 const server = app.listen('4811');
 const io = require('socket.io').listen(server);
@@ -11,7 +9,6 @@ app.get('/', function (req, res) {
 */
 
 app.use('./routes', require('./routes'));
-routes.initRoutes(app);
 
 io.sockets.on('connection', function(socket){
     socket.emit('test', 1);

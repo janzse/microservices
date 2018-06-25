@@ -42,6 +42,4 @@ setInterval(() => {
 
 }, 1000);
 
-module.exports = {
-    "setInterval": setInterval
-}
+module.exports = setInterval;
