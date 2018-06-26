@@ -1,11 +1,28 @@
 const cote = require('cote');
-const getBright2 = new cote.Responder({
+
+const bright2Responder = new cote.Responder({
     name: 'Brightness Service 2',
+    namespace: 'brightness',
     respondsTo: ['bright2']
 });
 
-getBright2.on('brightness 2', (request, callback) => {
+let bright2Publisher = new cote.Publisher({
+    name: 'brightness 2 publisher',
+    namespace: 'brightness',
+    broadcasts: ['bright2']
+});
+
+let brightness;
+
+bright2Responder.on('bright2', (request, callback) => {
     // helligkeit abfragen
-    let brightness = Math.floor(Math.random() * (255 - 200) + (Math.random() * 200));
+    brightness = Math.floor(Math.random() * (255 - 200) + (Math.random() * 200));
     callback(brightness);
 });
+
+function updateBrightness()
+{
+    bright2Publisher.publish('bright2', brightness);
+}
+
+setInterval(updateBrightness, 1000);

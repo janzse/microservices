@@ -27,5 +27,4 @@ function updateHumidity()
     humid1Publisher.publish('humid1', humidity);
 }
 
-
 setInterval(updateHumidity, 1000);

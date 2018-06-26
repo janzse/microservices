@@ -10,15 +10,28 @@ app.get('/', function(req, res) {
     res.sendFile(__dirname + '/index.html');
 });
 
+let id = 0;
+
 app.get('/humid1', function(req, res) {
-    humid1Requester.send({type: 'humid1', id: 1}, function(humid) {
+    humid1Requester.send({type: 'humid1', id: id++}, function(humid) {
         res.send(JSON.stringify({humidity: humid}));
+    });
+});
+
+app.get('/bright2', function(req, res) {
+    bright2Requester.send({type: 'bright2', id: id++}, function(bright) {
+        res.send(JSON.stringify({brightness: bright}));
     });
 });
 
 let humid1Requester = new cote.Requester({
     name: 'humidity 1 requester',
     namespace: 'humidity'
+});
+
+let bright2Requester = new cote.Requester({
+    name: 'brightness 2 requester',
+    namespace: 'brightness'
 });
 
 server.listen(4811);
