@@ -1,5 +1,8 @@
 const cote = require('cote');
-const getBright2 = new cote.Responder({name: 'Brightness Service 2'});
+const getBright2 = new cote.Responder({
+    name: 'Brightness Service 2',
+    respondsTo: ['bright2']
+});
 
 getBright2.on('brightness 2', (request, callback) => {
     // helligkeit abfragen

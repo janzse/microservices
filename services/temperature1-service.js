@@ -1,5 +1,8 @@
 const cote = require('cote');
-const getTemp1 = new cote.Responder({name: 'Temperature Service 1'});
+const getTemp1 = new cote.Responder({
+    name: 'Temperature Service 1',
+    respondsTo: ['temp1']
+});
 
 getTemp1.on('temperature 1', (request, callback) => {
     // temperatur abfragen

@@ -1,3 +1,4 @@
+/*
 import express from "express";
 
 const port = process.env.port || 4811;
@@ -16,3 +17,4 @@ app.listen(port);
 console.log("HTTP-Server is running on", "http://localhost:" + port);
 
 module.exports = app;
+*/

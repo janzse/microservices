@@ -1,6 +1,8 @@
-const cote = require('cote');
-const client = new cote.Requester({name: 'Client'});
+//const cote = require('cote');
+//let client = new cote.Requester({name: 'Client'});
 
+
+/*
 let id = 0;
 setInterval(() => {
     let req_time = {type: 'time', id: id++};
@@ -43,3 +45,4 @@ setInterval(() => {
 }, 1000);
 
 module.exports = setInterval;
+*/
