@@ -4,8 +4,9 @@ var io = require('socket.io')(server);
 server.listen(4811);
 
 app.get('/', function (req, res) {
-    res.sendfile(__dirname + '/index.html');
+    res.sendFile(__dirname + '/index.html');
 });
+
 
 io.on('connection', function (socket) {
     socket.emit('news', { hello: 'world' });
