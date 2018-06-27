@@ -20,9 +20,9 @@ bright2Responder.on('bright2', (request, callback) => {
     callback(brightness);
 });
 
-function updateBrightness()
+function publishBrightness()
 {
     bright2Publisher.publish('bright2', brightness);
 }
 
-setInterval(updateBrightness, 1000);
+setInterval(publishBrightness, 1000);

@@ -2,11 +2,13 @@ const cote = require('cote');
 
 const temp2Responder = new cote.Responder({
     name: 'Temperature Service 2',
+    namespace: 'temperature',
     respondsTo: ['temp2']
 });
 
 const temp2Publisher = new cote.Publisher({
     name: 'Temperature Service 2',
+    namespace: 'temperature',
     respondsTo: ['temp2']
 });
 
@@ -18,9 +20,9 @@ temp2Responder.on('temp2', (request, callback) => {
     callback(temperature);
 });
 
-function updateTEmperature2()
+function updateTemperature2()
 {
     temp2Publisher.publish('temp2', temperature);
 }
 
-setInterval(updateTEmperature2, 1000);
+setInterval(updateTemperature2, 1000);
