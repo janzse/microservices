@@ -1,11 +1,26 @@
 const cote = require('cote');
-const getTemp1 = new cote.Responder({
+
+const temp1Responder = new cote.Responder({
     name: 'Temperature Service 1',
     respondsTo: ['temp1']
 });
 
-getTemp1.on('temperature 1', (request, callback) => {
+const temp1Publisher = new cote.Publisher({
+    name: 'Temperature Service 1',
+    respondsTo: ['temp1']
+});
+
+let temperature;
+
+temp1Responder.on('temp1', (request, callback) => {
     // temperatur abfragen
-    let temperature = Math.floor((Math.random() * 40) + Math.random() * 10);
+    temperature = Math.floor((Math.random() * 40) + Math.random() * 10);
     callback(temperature);
 });
+
+function updateTemperature1()
+{
+    temp1Publisher.publish('temp1', temperature);
+}
+
+setInterval(updateTemperature1, 1000);

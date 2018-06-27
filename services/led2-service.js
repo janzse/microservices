@@ -1,9 +1,22 @@
 const cote = require('cote');
+
 const getLed2 = new cote.Responder({
     name: 'LED service 2',
     respondsTo: ['led2']
 });
 
-getLed1.on('led 2', (request, callback) => {
+const led2Publisher = new cote.Publisher({
+    name: 'LED service 2',
+    respondsTo: ['led2']
+});
+
+led2Responder.on('led2', (request, callback) => {
     callback("on");
 });
+
+function updateLed2()
+{
+    led2Publisher.publish('led2', "on");
+}
+
+setInterval(updateLed2, 1000);
