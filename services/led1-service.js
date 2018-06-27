@@ -39,7 +39,7 @@ let brightness;
 
 //setInterval(() => {
     bright2Subscriber.on('bright2', (request) => {
-        if (request !== null)
+        if (request !== null && request !== brightness)
             brightness = request;
     });
 //}, 1000);

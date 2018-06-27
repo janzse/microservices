@@ -17,7 +17,7 @@ app.get('/home', function(req, res) {
         res.send(JSON.stringify({data: data}));
     });*/
     let data = [];
-
+/*
     let req_led1 = {type: 'led1', id: id++};
     led1Requester.send(req_led1, (led) => {
         data.push({led1: led});
@@ -28,28 +28,28 @@ app.get('/home', function(req, res) {
     led2Requester.send(req_led2, (led) => {
         data.push({led2: led});
     });
-/*
+*/
     let req_temp1 = {type: 'temp1', id: id++};
     temp1Requester.send(req_temp1, (temp) => {
-        data.push({temp1: temp});
+        data.push({temp1: {value: temp}});
     });
 
     let req_temp2 = {type: 'temp2', id: id++};
     temp2Requester.send(req_temp2, (temp) => {
-        data.push({temp2: temp});
+        data.push({temp2: {value: temp}});
     });
 
     let req_humid1 = {type: 'humid1', id: id++};
     humid1Requester.send(req_humid1, (humid) => {
-        data.push({humid1: humid});
+        data.push({humid1: {value: humid}});
     });
 
     let req_bright2 = {type: 'bright2', id: id++};
     bright2Requester.send(req_bright2, (bright) => {
         data.push({bright2: {value: bright}});
-        //res.send(JSON.stringify({data: data}));
+        res.send(JSON.stringify({data: data}));
     });
-*/
+
 });
 
 app.get('/humid1', function(req, res) {
