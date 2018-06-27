@@ -1,6 +1,6 @@
 const cote = require('cote');
 
-const getLed2 = new cote.Responder({
+const led2Responder = new cote.Responder({
     name: 'LED service 2',
     respondsTo: ['led2']
 });
