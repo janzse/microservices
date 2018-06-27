@@ -22,22 +22,27 @@ const bright2Subscriber = new cote.Subscriber({
 let led_status;
 
 led1Responder.on('led1', (request, callback) => {
-    led_status = {
-        description: 'Light status changed',
-        value: 255,
-        timestamp: new Date()
-    };
-    callback(led_status);
+    if (brightness !== null)
+    {
+        led_status = {
+            description: 'Light status changed',
+            value: brightness,
+            timestamp: new Date()
+        };
+        callback(led_status);
+    }
+    else
+        callback("No brightness value");
 });
 
 let brightness;
 
-setInterval(() => {
+//setInterval(() => {
     bright2Subscriber.on('bright2', (request) => {
         if (request !== null)
             brightness = request;
     });
-}, 1000);
+//}, 1000);
 
 
 function publishLed1Status()
