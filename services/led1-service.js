@@ -15,7 +15,7 @@ const led1Publisher = new cote.Publisher({
 
 const bright2Subscriber = new cote.Subscriber({
     name: 'brightness 2 subscriber',
-    namespace: 'brightness',
+    namespace: 'sensor',
     subscribesTo: ['bright2']
 })
 
