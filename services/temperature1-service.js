@@ -2,13 +2,13 @@ const cote = require('cote');
 
 const temp1Responder = new cote.Responder({
     name: 'temperature 1 responder',
-    namespace: 'temperature1',
+    namespace: 'sensor',
     respondsTo: ['temp1']
 });
 
 const temp1Publisher = new cote.Publisher({
     name: 'temperature 1 publisher',
-    namespace: 'temperature1',
+    namespace: 'sensor',
     respondsTo: ['temp1']
 });
 

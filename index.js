@@ -85,32 +85,32 @@ app.get('/led2', function(req, res) {
 
 let humid1Requester = new cote.Requester({
     name: 'humidity 1 requester',
-    namespace: 'humidity'
+    namespace: 'sensor'
 });
 
 let bright2Requester = new cote.Requester({
     name: 'brightness 2 requester',
-    namespace: 'brightness'
+    namespace: 'sensor'
 });
 
 let temp1Requester = new cote.Requester({
     name: 'temperature 1 requester',
-    namespace: 'temperature1'
+    namespace: 'sensor'
 });
 
 let temp2Requester = new cote.Requester({
     name: 'temperature 2 requester',
-    namespace: 'temperature2'
+    namespace: 'sensor'
 });
 
 let led1Requester = new cote.Requester({
     name: 'led1 1 requester',
-    namespace: 'led'
+    namespace: 'sensor'
 });
 
 let led2Requester = new cote.Requester({
     name: 'led1 2 requester',
-    namespace: 'led'
+    namespace: 'sensor'
 });
 
 server.listen(4811);

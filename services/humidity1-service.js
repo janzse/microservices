@@ -2,14 +2,14 @@ const cote = require('cote');
 
 const humid1Responder = new cote.Responder({
     name: 'humidity 1 responder',
-    namespace: 'humidity',
+    namespace: 'sensor',
     respondsTo: ['humid1']
 });
 
 
 const humid1Publisher = new cote.Publisher({
     name: 'humidity 1 publisher',
-    namespace: 'humidity',
+    namespace: 'sensor',
     broadcasts: ['humid1']
 });
 

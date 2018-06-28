@@ -2,13 +2,13 @@ const cote = require('cote');
 
 const led2Responder = new cote.Responder({
     name: 'led service 2',
-    namespace: 'led',
+    namespace: 'sensor',
     respondsTo: ['led2']
 });
 
 const led2Publisher = new cote.Publisher({
     name: 'led service 2',
-    namespace: 'led',
+    namespace: 'sensor',
     respondsTo: ['led2']
 });
 
