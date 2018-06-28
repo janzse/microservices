@@ -6,16 +6,16 @@ const led1Responder = new cote.Responder({
     respondsTo: ['led1-set']
 });
 
-const led1DebugResponder = new cote.Responder({
-    name: 'led 1 responder',
-    namespace: 'sensor',
-    respondsTo: ['led1-set']
-});
-
 const led1Publisher = new cote.Publisher({
     name: 'led 1 publisher',
     namespace: 'sensor',
     broadcasts: ['led1-changed']
+});
+
+const led1DebugResponder = new cote.Responder({
+    name: 'led 1 responder',
+    namespace: 'sensor',
+    respondsTo: ['led1-debug']
 });
 
 const led1DebugPublisher = new cote.Publisher({
@@ -44,13 +44,14 @@ led1Responder.on('led1-set', (request, callback) => {
 
 let debug;
 
-led1DebugResponder.on('led1-set', (request, callback) => {
+led1DebugResponder.on('led1-debug', (request, callback) => {
     debug = {
         description: 'Light status 1 changed',
         value: false,
         timestamp: new Date()
     };
-    callback(led_status);
+    led1DebugPublisher.publish('led1-debug', request);
+    callback(request);
 });
 
 let brightness;
@@ -69,7 +70,6 @@ function publishLed1Status()
     };
     dummyVal = !dummyVal;
     led1Publisher.publish('led1-changed', led_status);
-    led1DebugPublisher.publish('led1-debug', request);
 }
 
 setInterval(publishLed1Status, 1000);
