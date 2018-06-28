@@ -125,22 +125,22 @@ io.on('connection', function(socket){
         });
     });
     socket.on('responseSLED', function(data){
-        //console.log(data);
+        console.log(data);
     });
     socket.on('responseLED', function(data){
-        //console.log(data);
+        console.log(data);
     });
     socket.on('responseDTemp', function(data){
-        //console.log(data);
+        console.log(data);
     });
     socket.on('responseDHum', function(data){
-        //console.log(data);
+        console.log(data);
     });
     socket.on('responseCLux', function(data){
-        //console.log(data);
+        console.log(data);
     });
     socket.on('responseCTemp', function(data){
-        //console.log(data);
+        console.log(data);
     });
 
     socket.on('error', function(err){
