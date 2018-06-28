@@ -13,22 +13,18 @@ app.get('/', function(req, res) {
 let id = 0;
 
 app.get('/home', function(req, res) {
-    /*dataRequester.send({type: 'home', id: id++}, function(data) {
-        res.send(JSON.stringify({data: data}));
-    });*/
     let data = [];
-/*
+
     let req_led1 = {type: 'led1', id: id++};
     led1Requester.send(req_led1, (led) => {
         data.push({led1: led});
-        res.send(JSON.stringify({data: data}));
     });
 
     let req_led2 = {type: 'led2', id: id++};
     led2Requester.send(req_led2, (led) => {
         data.push({led2: led});
     });
-*/
+
     let req_temp1 = {type: 'temp1', id: id++};
     temp1Requester.send(req_temp1, (temp) => {
         data.push({temp1: {value: temp}});
@@ -42,7 +38,6 @@ app.get('/home', function(req, res) {
     let req_humid1 = {type: 'humid1', id: id++};
     humid1Requester.send(req_humid1, (humid) => {
         data.push({humid1: {value: humid}});
-        //res.send(JSON.stringify({data: data}));
     });
 
     let req_bright2 = {type: 'bright2', id: id++};
@@ -86,11 +81,6 @@ app.get('/led2', function(req, res) {
     led2Requester.send({type: 'led2', id: id++}, function(led) {
         res.send(JSON.stringify({led: led}));
     });
-});
-
-let dataRequester = new cote.Requester({
-    name: 'data requester',
-    namespace: 'all'
 });
 
 let humid1Requester = new cote.Requester({
