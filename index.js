@@ -25,22 +25,22 @@ app.get('/home', function(req, res) {
         data.push({led2: led});
     });
 
-    let req_temp1 = {type: 'temp1', id: id++};
+    let req_temp1 = {type: 'temp1-data', id: id++};
     temp1Requester.send(req_temp1, (temp) => {
         data.push({temp1: {value: temp}});
     });
 
-    let req_temp2 = {type: 'temp2', id: id++};
+    let req_temp2 = {type: 'temp2-data', id: id++};
     temp2Requester.send(req_temp2, (temp) => {
         data.push({temp2: {value: temp}});
     });
 
-    let req_humid1 = {type: 'humid1', id: id++};
+    let req_humid1 = {type: 'humidity-data', id: id++};
     humid1Requester.send(req_humid1, (humid) => {
         data.push({humid1: {value: humid}});
     });
 
-    let req_bright2 = {type: 'bright2', id: id++};
+    let req_bright2 = {type: 'brightness-data', id: id++};
     bright2Requester.send(req_bright2, (bright) => {
         data.push({bright2: {value: bright}});
         res.send(JSON.stringify({data: data}));
@@ -48,25 +48,25 @@ app.get('/home', function(req, res) {
 });
 
 app.get('/humid1', function(req, res) {
-    humid1Requester.send({type: 'humid1', id: id++}, function(humid) {
+    humid1Requester.send({type: 'humidity-data', id: id++}, function(humid) {
         res.send(JSON.stringify({humidity: humid}));
     });
 });
 
 app.get('/bright2', function(req, res) {
-    bright2Requester.send({type: 'bright2', id: id++}, function(bright) {
+    bright2Requester.send({type: 'brightness-data', id: id++}, function(bright) {
         res.send(JSON.stringify({brightness: bright}));
     });
 });
 
 app.get('/temp1', function(req, res) {
-    temp1Requester.send({type: 'temp1', id: id++}, function(temp) {
+    temp1Requester.send({type: 'temp1-data', id: id++}, function(temp) {
         res.send(JSON.stringify({temperature1: temp}));
     });
 });
 
 app.get('/temp2', function(req, res) {
-    temp2Requester.send({type: 'temp2', id: id++}, function(temp) {
+    temp2Requester.send({type: 'temp2-data', id: id++}, function(temp) {
         res.send(JSON.stringify({temperature2: temp}));
     });
 });

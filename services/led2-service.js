@@ -9,7 +9,7 @@ const led2Responder = new cote.Responder({
 const led2Publisher = new cote.Publisher({
     name: 'led service 2',
     namespace: 'sensor',
-    respondsTo: ['led2-set']
+    broadcasts: ['led2-changed']
 });
 
 let led_status;
@@ -25,7 +25,7 @@ led2Responder.on('led2-set', (request, callback) => {
 
 function updateLed2()
 {
-    led2Publisher.publish('led2-set', led_status);
+    led2Publisher.publish('led2-changed', led_status);
 }
 
 setInterval(updateLed2, 1000);

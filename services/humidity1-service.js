@@ -3,27 +3,32 @@ const cote = require('cote');
 const humid1Responder = new cote.Responder({
     name: 'humidity 1 responder',
     namespace: 'sensor',
-    respondsTo: ['humid1']
+    respondsTo: ['humidity-data']
 });
 
 
 const humid1Publisher = new cote.Publisher({
     name: 'humidity 1 publisher',
     namespace: 'sensor',
-    broadcasts: ['humid1']
+    broadcasts: ['humidity-data']
 });
 
-let humidity;
+let humid_status;
 
-humid1Responder.on('humid1', function (request, callback){
+humid1Responder.on('humidity-data', function (request, callback){
     // Luftfeuchtigkeit abfragen
-    humidity = Math.floor(Math.random() * (100 - 40) + (Math.random() * 50));
+    let humidity = Math.floor(Math.random() * (100 - 40) + (Math.random() * 50));
+    humid_status = {
+        description: 'Humidity',
+        value: humidity,
+        timestamp: new Date()
+    };
     callback(humidity);
 });
 
 function publishHumidity1()
 {
-    humid1Publisher.publish('humid1', humidity);
+    humid1Publisher.publish('humidity-data', humid_status);
 }
 
 setInterval(publishHumidity1, 1000);
