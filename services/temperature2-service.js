@@ -26,6 +26,12 @@ temp2Responder.on('temp2-data', (request, callback) => {
 
 function publishTemperature2()
 {
+    let temperature = Math.floor((Math.random() * 40) + Math.random() * 7);
+    temp_status = {
+        description: 'Temperature 2',
+        value: temperature,
+        timestamp: new Date()
+    };
     temp2Publisher.publish('temp2-data', temp_status);
 }
 
