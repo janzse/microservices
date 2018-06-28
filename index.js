@@ -116,9 +116,32 @@ let led2Requester = new cote.Requester({
 server.listen(4811);
 io.on('connection', function(socket){
     console.log('a client connected');
-    socket.on('register', function(){
-        socket.emit('request',{method: 'setLED', data:true});
+    // Verbindungen zu Raspberry Pi
+    socket.on('register', function(data){
+        data.response.forEach((element) => {
+            socket.emit('request', {method: element});
+        });
+        //socket.emit('request',{method: 'setLED', data:true});
     });
+    socket.on('responseSLED', function(data){
+        console.log(data);
+    });
+    socket.on('responseLED', function(data){
+        console.log(data);
+    });
+    socket.on('responseDTemp', function(data){
+        console.log(data);
+    });
+    socket.on('responseDHum', function(data){
+        console.log(data);
+    });
+    socket.on('responseCLux', function(data){
+        console.log(data);
+    });
+    socket.on('responseCTemp', function(data){
+        console.log(data);
+    });
+
     socket.on('disconnect', function(){
         console.log('client disconnected');
     });
