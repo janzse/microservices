@@ -50,6 +50,7 @@ led1Responder.on('led1-set', (request, callback) => {
         value: false,
         timestamp: new Date()
     };
+    led1DebugPublisher.publish('led1-debug', request);
     callback(led_status);
 });
 
@@ -69,7 +70,6 @@ function publishLed1Status()
             };
     dummyVal = !dummyVal;
     led1Publisher.publish('led1-changed', led_status);
-    led1DebugPublisher.publish('led1-debug', debug);
 }
 
 setInterval(publishLed1Status, 1000);
