@@ -9,8 +9,7 @@ const led1Responder = new cote.Responder({
 const led1Publisher = new cote.Publisher({
     name: 'led 1 publisher',
     namespace: 'sensor',
-    broadcasts: ['led1-set'],
-
+    broadcasts: ['led1-set']
 });
 
 const bright2Subscriber = new cote.Subscriber({
