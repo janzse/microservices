@@ -21,7 +21,7 @@ const humid1Subscriber = new cote.Subscriber({
 let led_status;
 
 led2Responder.on('led2', (request, callback) => {
-    if (brightness !== null)
+    if (humidity !== null)
     {
         led_status = {
             description: 'Light status changed',
@@ -31,7 +31,7 @@ led2Responder.on('led2', (request, callback) => {
         callback(led_status);
     }
     else
-        callback("No brightness value");
+        callback("No humidity value");
 });
 
 let humidity;
