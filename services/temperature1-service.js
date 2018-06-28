@@ -14,15 +14,13 @@ const temp1Publisher = new cote.Publisher({
 
 let temp_status;
 
-temp1Responder.on('temp1-data', (request, callback) => {
-    //let temperature = Math.floor((Math.random() * 40) + Math.random() * 10);
+temp1Responder.on('temp1-data', (request) => {
     temp_status = {
         description: 'Temperature 1',
         value: request.value,
         timestamp: new Date()
     };
-    callback(temp_status);
-    //temp1Publisher.publish('temp1-data', temp_status);
+    temp1Publisher.publish('temp1-data', temp_status);
 });
 
 function publishTemperature1()
