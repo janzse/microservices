@@ -12,35 +12,16 @@ const led2Publisher = new cote.Publisher({
     respondsTo: ['led2']
 });
 
-const humid1Subscriber = new cote.Subscriber({
-    name: 'humidity 1 subscriber',
-    namespace: 'sensor',
-    subscribesTo: ['bright2']
-})
-
 let led_status;
 
 led2Responder.on('led2', (request, callback) => {
-    if (humidity !== null)
-    {
-        led_status = {
-            description: 'Light status changed',
-            value: true,
-            timestamp: new Date()
-        };
-        callback(led_status);
-    }
-    else
-        callback("No humidity value");
+    led_status = {
+        description: 'Light status 2 changed',
+        value: true,
+        timestamp: new Date()
+    };
+    callback(led_status);
 });
-
-let humidity;
-
-humid1Subscriber.on('bright2', (request) => {
-    if (request !== null && request !== humidity)
-        humidity = request;
-});
-
 
 function updateLed2()
 {
