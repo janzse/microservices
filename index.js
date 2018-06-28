@@ -134,11 +134,10 @@ io.on('connection', function(socket){
     });
     socket.on('responseLED', function(data){
         console.log(data);
-        nodeTempRequester.send({type: 'temp1-data', id: id++, value: data.response});
     });
     socket.on('responseDTemp', function(data){
         console.log(data);
-
+        nodeTempRequester.send({type: 'temp1-data', id: id++, value: data.response});
     });
     socket.on('responseDHum', function(data){
         console.log(data);
