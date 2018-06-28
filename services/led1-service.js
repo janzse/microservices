@@ -22,14 +22,12 @@ let led_status;
 let dummyVal = false;
 
 led1Responder.on('led1-set', (request, callback) => {
-    //if (request.value !== null) {
-        led_status = {
-            description: 'Light status 1 changed',
-            value: false,
-            timestamp: new Date()
-        };
-        callback(led_status);
-    //}
+    led_status = {
+        description: 'Light status 1 changed',
+        value: false,
+        timestamp: new Date()
+    };
+    callback(led_status);
 });
 
 let brightness;
@@ -37,7 +35,6 @@ let brightness;
 bright2Subscriber.on('bright2', (request) => {
     brightness = request;
 });
-
 
 function publishLed1Status()
 {

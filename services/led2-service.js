@@ -15,14 +15,12 @@ const led2Publisher = new cote.Publisher({
 let led_status;
 
 led2Responder.on('led2-set', (request, callback) => {
-    if (request.value !== null) {
-        led_status = {
-            description: 'Light status 1 changed',
-            value: request.value,
-            timestamp: new Date()
-        };
-        callback(led_status);
-    }
+    led_status = {
+        description: 'Light status 1 changed',
+        value: request.value,
+        timestamp: new Date()
+    };
+    callback(led_status);
 });
 
 function updateLed2()
