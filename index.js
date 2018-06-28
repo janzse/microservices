@@ -42,6 +42,7 @@ app.get('/home', function(req, res) {
     let req_humid1 = {type: 'humid1', id: id++};
     humid1Requester.send(req_humid1, (humid) => {
         data.push({humid1: {value: humid}});
+        //res.send(JSON.stringify({data: data}));
     });
 
     let req_bright2 = {type: 'bright2', id: id++};
@@ -49,7 +50,6 @@ app.get('/home', function(req, res) {
         data.push({bright2: {value: bright}});
         res.send(JSON.stringify({data: data}));
     });
-
 });
 
 app.get('/humid1', function(req, res) {
@@ -105,12 +105,12 @@ let bright2Requester = new cote.Requester({
 
 let temp1Requester = new cote.Requester({
     name: 'temperature 1 requester',
-    namespace: 'temperature'
+    namespace: 'temperature1'
 });
 
 let temp2Requester = new cote.Requester({
     name: 'temperature 2 requester',
-    namespace: 'temperature'
+    namespace: 'temperature2'
 });
 
 let led1Requester = new cote.Requester({

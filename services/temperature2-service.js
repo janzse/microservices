@@ -1,28 +1,28 @@
 const cote = require('cote');
 
 const temp2Responder = new cote.Responder({
-    name: 'Temperature Service 2',
-    namespace: 'temperature',
+    name: 'temperature 2 responder',
+    namespace: 'temperature2',
     respondsTo: ['temp2']
 });
 
 const temp2Publisher = new cote.Publisher({
-    name: 'Temperature Service 2',
-    namespace: 'temperature',
+    name: 'temperature 2 publisher',
+    namespace: 'temperature2',
     respondsTo: ['temp2']
 });
 
 let temperature;
 
 temp2Responder.on('temp2', (request, callback) => {
-    // temperatur abfragen
-    temperature = Math.floor((Math.random() * 40) + (Math.random() * 7));
+    // Temperatur abfragen
+    temperature = Math.floor((Math.random() * 40) + Math.random() * 7);
     callback(temperature);
 });
 
-function updateTemperature2()
+function publishTemperature2()
 {
     temp2Publisher.publish('temp2', temperature);
 }
 
-setInterval(updateTemperature2, 1000);
+setInterval(publishTemperature2, 1000);
