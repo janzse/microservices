@@ -24,7 +24,7 @@ led1Responder.on('led1-set', (request, callback) => {
     if (request.value !== null) {
         led_status = {
             description: 'Light status 1 changed',
-            value: request.body.value,
+            value: request.value,
             timestamp: new Date()
         };
         callback(led_status);
