@@ -17,7 +17,7 @@ let led_status;
 led2Responder.on('led2-set', (request, callback) => {
     led_status = {
         description: 'Light status 1 changed',
-        value: request.value,
+        value: request.body.value,
         timestamp: new Date()
     };
     callback(led_status);

@@ -71,14 +71,14 @@ app.get('/temp2', function(req, res) {
     });
 });
 
-app.get('/led1', function(req, res) {
-    led1Requester.send({type: 'led1-set', id: id++}, function(led) {
+app.post('/led1', function(req, res) {
+    led1Requester.send({type: 'led1-set', id: id++, body: req.body}, function(led) {
         res.send(JSON.stringify({led: led}));
     });
 });
 
-app.get('/led2', function(req, res) {
-    led2Requester.send({type: 'led2-set', id: id++}, function(led) {
+app.post('/led2', function(req, res) {
+    led2Requester.send({type: 'led2-set', id: id++, body: req.body}, function(led) {
         res.send(JSON.stringify({led: led}));
     });
 });
@@ -118,10 +118,9 @@ let led1DebugRequester = new cote.Requester({
     namespace: 'sensor'
 });
 
-
-    led1DebugRequester.send({type: 'led1-debug', id: id++}, function (led) {
-        res.send(JSON.stringify({led: led}));
-    });
+led1DebugRequester.send({type: 'led1-debug', id: id++}, function (led) {
+    res.send(JSON.stringify({led: led}));
+});
 
 
 server.listen(4811);

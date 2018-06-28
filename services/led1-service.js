@@ -36,7 +36,7 @@ let dummyVal = false;
 led1Responder.on('led1-set', (request, callback) => {
     led_status = {
         description: 'Light status 1 changed',
-        value: false,
+        value: request.body.value,
         timestamp: new Date()
     };
     callback(led_status);
