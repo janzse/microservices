@@ -116,13 +116,22 @@ let led2Requester = new cote.Requester({
 server.listen(4811);
 io.on('connection', function(socket){
     console.log('a client connected');
-    socket.on('register', function(data){
-        console.log(data);
+    socket.on('register', function(){
+        socket.emit('request',{method: 'setLED', data:true});
     });
     socket.on('disconnect', function(){
         console.log('client disconnected');
     });
 });
+/*
+{ methods:
+   [ 'setLED',
+     'getLED',
+     'readDHT22Temperature',
+     'readDHT22Humidity' ] }
+
+*/
+
 
 /*
 io.on('register', function(data){
