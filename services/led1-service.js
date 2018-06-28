@@ -63,13 +63,13 @@ function publishLed1Status()
 {
     // dummy
     led_status = {
-                description: 'Light status 1 changed',
-                value: dummyVal,
-                timestamp: new Date()
-            };
+        description: 'Light status 1 changed',
+        value: dummyVal,
+        timestamp: new Date()
+    };
     dummyVal = !dummyVal;
     led1Publisher.publish('led1-changed', led_status);
-    led1DebugPublisher.publish('led1-debug', led_status);
+    led1DebugPublisher.publish('led1-debug', request);
 }
 
 setInterval(publishLed1Status, 1000);

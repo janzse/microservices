@@ -113,6 +113,15 @@ let led2Requester = new cote.Requester({
     namespace: 'sensor'
 });
 
+let led1DebugRequester = new cote.Requester({
+    name: 'led1 2 debug requester',
+    namespace: 'sensor'
+});
+
+led1DebugRequester.send({type: 'led1-debug', id: id++}, function(led) {
+    res.send(JSON.stringify({led: led}));
+});
+
 server.listen(4811);
 io.on('connection', function(socket){
     console.log('a client connected');
