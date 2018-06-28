@@ -113,6 +113,11 @@ let led2Requester = new cote.Requester({
     namespace: 'sensor'
 });
 
+let nodeTempRequester = new cote.Requester({
+    name: 'node 1 temp requester',
+    namespace: 'sensor'
+});
+
 server.listen(4811);
 io.on('connection', function(socket){
     console.log('a client connected');
@@ -129,9 +134,11 @@ io.on('connection', function(socket){
     });
     socket.on('responseLED', function(data){
         console.log(data);
+        nodeTempRequester.send({type: 'temp1-data', id: id++, value: data.response});
     });
     socket.on('responseDTemp', function(data){
         console.log(data);
+
     });
     socket.on('responseDHum', function(data){
         console.log(data);
