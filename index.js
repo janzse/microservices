@@ -15,12 +15,12 @@ let id = 0;
 app.get('/home', function(req, res) {
     let data = [];
 
-    let req_led1 = {type: 'led1', id: id++};
+    let req_led1 = {type: 'led1-set', id: id++};
     led1Requester.send(req_led1, (led) => {
         data.push({led1: led});
     });
 
-    let req_led2 = {type: 'led2', id: id++};
+    let req_led2 = {type: 'led2-set', id: id++};
     led2Requester.send(req_led2, (led) => {
         data.push({led2: led});
     });
@@ -72,13 +72,13 @@ app.get('/temp2', function(req, res) {
 });
 
 app.get('/led1', function(req, res) {
-    led1Requester.send({type: 'led1', id: id++}, function(led) {
+    led1Requester.send({type: 'led1-set', id: id++}, function(led) {
         res.send(JSON.stringify({led: led}));
     });
 });
 
 app.get('/led2', function(req, res) {
-    led2Requester.send({type: 'led2', id: id++}, function(led) {
+    led2Requester.send({type: 'led2-set', id: id++}, function(led) {
         res.send(JSON.stringify({led: led}));
     });
 });

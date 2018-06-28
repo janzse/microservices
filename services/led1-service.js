@@ -3,13 +3,13 @@ const cote = require('cote');
 const led1Responder = new cote.Responder({
     name: 'led 1 responder',
     namespace: 'sensor',
-    respondsTo: ['led1']
+    respondsTo: ['led1-set']
 });
 
 const led1Publisher = new cote.Publisher({
     name: 'led 1 publisher',
     namespace: 'sensor',
-    broadcasts: ['led1'],
+    broadcasts: ['led1-set'],
 
 });
 
@@ -21,20 +21,21 @@ const bright2Subscriber = new cote.Subscriber({
 
 let led_status;
 
-led1Responder.on('led1', (request, callback) => {
-    led_status = {
-        description: 'Light status 1 changed',
-        value: true,
-        timestamp: new Date()
-    };
-    callback(led_status);
+led1Responder.on('led1-set', (request, callback) => {
+    if (request.body.value !== null) {
+        led_status = {
+            description: 'Light status 1 changed',
+            value: request.body.value,
+            timestamp: new Date()
+        };
+        callback(led_status);
+    }
 });
 
 let brightness;
 
 bright2Subscriber.on('bright2', (request) => {
-    if (request !== null && request !== brightness)
-        brightness = request;
+    brightness = request;
 });
 
 
