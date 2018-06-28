@@ -118,11 +118,11 @@ let led1DebugRequester = new cote.Requester({
     namespace: 'sensor'
 });
 
-app.get('/debug', function(req, res) {
+
     led1DebugRequester.send({type: 'led1-debug', id: id++}, function (led) {
         res.send(JSON.stringify({led: led}));
     });
-});
+
 
 server.listen(4811);
 io.on('connection', function(socket){
