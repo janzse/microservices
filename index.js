@@ -116,14 +116,19 @@ let led2Requester = new cote.Requester({
 server.listen(4811);
 io.on('connection', function(socket){
     console.log('a client connected');
+    socket.on('register', function(data){
+        console.log(data);
+    });
     socket.on('disconnect', function(){
         console.log('client disconnected');
     });
 });
 
+/*
 io.on('register', function(data){
     console.log(data);
 });
+*/
 
 new cote.Sockend(io, {
     name: 'client sockend server'
