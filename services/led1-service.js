@@ -19,6 +19,7 @@ const bright2Subscriber = new cote.Subscriber({
 })
 
 let led_status;
+let dummyVal = false;
 
 led1Responder.on('led1-set', (request, callback) => {
     if (request.value !== null) {
@@ -40,6 +41,13 @@ bright2Subscriber.on('bright2', (request) => {
 
 function publishLed1Status()
 {
+    // dummy
+    led_status = {
+                description: 'Light status 1 changed',
+                value: dummyVal,
+                timestamp: new Date()
+            };
+    dummyVal = !dummyVal;
     led1Publisher.publish('led1-changed', led_status);
 }
 
