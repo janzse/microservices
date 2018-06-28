@@ -123,7 +123,6 @@ io.on('connection', function(socket){
         data.methods.forEach((element) => {
             socket.emit('request', {method: element});
         });
-        //socket.emit('request',{method: 'setLED', data:true});
     });
     socket.on('responseSLED', function(data){
         //console.log(data);
@@ -142,6 +141,10 @@ io.on('connection', function(socket){
     });
     socket.on('responseCTemp', function(data){
         //console.log(data);
+    });
+
+    socket.on('error', function(err){
+        console.log(err);
     });
 
     socket.on('disconnect', function(){
