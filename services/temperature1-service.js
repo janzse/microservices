@@ -9,7 +9,7 @@ const temp1Responder = new cote.Responder({
 const temp1Publisher = new cote.Publisher({
     name: 'temperature 1 publisher',
     namespace: 'sensor',
-    respondsTo: ['temp1-data']
+    broadcasts: ['temp1-data']
 });
 
 let temp_status;

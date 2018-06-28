@@ -6,7 +6,6 @@ const humid1Responder = new cote.Responder({
     respondsTo: ['humidity-data']
 });
 
-
 const humid1Publisher = new cote.Publisher({
     name: 'humidity 1 publisher',
     namespace: 'sensor',

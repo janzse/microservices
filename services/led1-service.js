@@ -44,8 +44,8 @@ led1Responder.on('led1-set', (request, callback) => {
 
 let debug;
 
-led1Responder.on('led1-set', (request, callback) => {
-    led_status = {
+led1DebugResponder.on('led1-set', (request, callback) => {
+    debug = {
         description: 'Light status 1 changed',
         value: false,
         timestamp: new Date()
@@ -69,7 +69,7 @@ function publishLed1Status()
             };
     dummyVal = !dummyVal;
     led1Publisher.publish('led1-changed', led_status);
-    led1DebugPublisher.publish('led1-debug', debug);
+    led1DebugPublisher.publish('led1-debug', led_status);
 }
 
 setInterval(publishLed1Status, 1000);
