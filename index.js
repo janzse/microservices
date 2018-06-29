@@ -150,7 +150,6 @@ function requestData(socket, data) {
 
 io.on('connection', function(socket){
     console.log('a client connected');
-    clients++;
     console.log("clients connected:", Object.keys(io.sockets.connected).length);
     // Verbindungen zu Raspberry Pi
     socket.on('register', (data) => startTimer(socket, data));
