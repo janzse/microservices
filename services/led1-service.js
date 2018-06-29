@@ -40,12 +40,12 @@ bright2Subscriber.on('bright2', (request) => {
 function publishLed1Status()
 {
     // dummy
-    led_status = {
+    /*led_status = {
         description: 'Light status 1 changed',
         value: true,
         timestamp: new Date()
     };
-    dummyVal = !dummyVal;
+    dummyVal = !dummyVal;*/
 
     if (led_status !== null)
         led1Publisher.publish('led1-changed', led_status);
