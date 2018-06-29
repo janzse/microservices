@@ -134,9 +134,11 @@ io.on('connection', function(socket){
         });
     });
     socket.on('responseSLED', function(data){
+        console.log("responseSLED");
         console.log(data);
     });
     socket.on('responseLED', function(data){
+        console.log("responseLED");
         console.log(data);
     });
     socket.on('responseDTemp', function(data){
@@ -145,12 +147,15 @@ io.on('connection', function(socket){
         nodeTempRequester.send({type: 'temp1-data', id: id++, value: data});
     });
     socket.on('responseDHum', function(data){
+        console.log("responseDHum");
         console.log(data);
     });
     socket.on('responseCLux', function(data){
+        console.log("responseCLux");
         console.log(data);
     });
     socket.on('responseCTemp', function(data){
+        console.log("responseCTemp");
         console.log(data);
     });
 
