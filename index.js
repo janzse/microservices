@@ -178,11 +178,9 @@ io.on('connection', function(socket){
             value: data.response,
             timestamp: new Date()
         };
-        if(deviceID === 1) {
-            socket.emit('led1-changed', led_status)
-        } else if(deviceID === 2) {
-            socket.emit('led2-changed', led_status)
-        }
+        socket.emit(`led${deviceID}-changed`, led_status)
+        console.log("ID:",deviceID);
+
     });
     socket.on('responseLED', function(data){
         console.log("responseLED");
