@@ -77,8 +77,11 @@ app.get('/temp2', function(req, res) {
 app.post('/led1', function(req, res) {
     //led1Requester.send({type: 'led1-set', id: id++, body: req.body, socket: pi1Socket});
     console.log(req.body);
-    pi1Socket.emit('request', { method: "setLED", data: req.body.value});
-    res.send(JSON.stringify({status: "success"}));
+    pi1Socket.emit('request', { method: "setLED", data: req.body.value}, (response) => {
+        console.log("response:", response);
+        res.send(JSON.stringify({status: response}));
+    });
+    //res.send(JSON.stringify({status: "success"}));
 });
 
 app.post('/led2', function(req, res) {
