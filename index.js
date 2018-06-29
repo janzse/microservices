@@ -75,9 +75,9 @@ app.get('/temp2', function(req, res) {
 });
 
 app.post('/led1', function(req, res) {
-    led1Requester.send({type: 'led1-set', id: id++, body: req.body}, function(led) {
-        res.send(JSON.stringify({led: led}));
-    });
+    led1Requester.send({type: 'led1-set', id: id++, body: req.body});
+    console.log(req.body);
+    res.send(JSON.stringify({status: "success"}));
 });
 
 app.post('/led2', function(req, res) {
