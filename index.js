@@ -1,4 +1,4 @@
-import cors from 'cors';
+const cors = require('cors');
 
 const app = require('express')(),
     bodyParser = require('body-parser'),

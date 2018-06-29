@@ -34,7 +34,7 @@ function publishTemperature1()
         timestamp: new Date()
     };
     temp1Publisher.publish('temp1-data', temp_status);
-    console.log('publish: ', temp_status);
+    //console.log('publish: ', temp_status);
 }
 
 setInterval(publishTemperature1, 1000);
