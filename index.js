@@ -126,7 +126,7 @@ function startTimer(socket, data)
     if (!timerRunning)
     {
         timerRunning = true;
-        intervalEvent = setInterval(() => requestData(socket, data), 1000);
+        intervalEvent = setInterval(() => requestData(socket, data), 3000);
     }
 }
 function stopTimer()

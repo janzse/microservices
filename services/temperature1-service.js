@@ -45,4 +45,4 @@ function publishTemperature1()
 
 }
 
-setInterval(publishTemperature1, 1000);
+setInterval(publishTemperature1, 3000);
