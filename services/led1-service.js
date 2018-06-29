@@ -50,8 +50,8 @@ function publishLed1Status(status)
         timestamp: new Date()
     };
     dummyVal = !dummyVal;*/
-    if (status !== undefined)
-        led1Publisher.publish('led1-changed', status);
+    //if (status !== undefined)
+    led1Publisher.publish('led1-changed', status);
 }
 
 //setInterval(publishLed1Status, 1000);
