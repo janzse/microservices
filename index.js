@@ -217,11 +217,11 @@ io.on('connection', function(socket){
         //console.log("responseLED");
         //console.log(data);
         if(data.deviceID === 1) {
-            led1Requester({type: 'led1-changed', id: id++, value: data.response});
+            led1Requester.send({type: 'led1-changed', id: id++, value: data.response});
         }
         else
         {
-            led2Requester({type: 'led2-changed', id: id++, value: data.response});
+            led2Requester.send({type: 'led2-changed', id: id++, value: data.response});
         }
     });
     socket.on('responseDTemp', function(data){
