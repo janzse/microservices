@@ -38,7 +38,7 @@ brightSubscriber.on('brightness-data', (brightness) => {
         if (oldValue === undefined)
             oldValue = brightness.value; // first time check
 
-        if (oldValue !== brightness.value) {
+        if (oldValue !== brightness.value && !(oldValue < 210)) {
             led_status = {
                 description: 'Light status 2 changed',
                 value: true,
