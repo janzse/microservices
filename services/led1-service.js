@@ -20,10 +20,8 @@ const bright2Subscriber = new cote.Subscriber({
 
 let led_status;
 let dummyVal = false;
-let state;
 
 led1Responder.on('led1-set', (request) => {
-    state = request.body.value;
     led_status = {
         description: 'Light status 1 changed',
         value: request.body.value,
