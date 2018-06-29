@@ -121,12 +121,12 @@ let nodeTempRequester = new cote.Requester({
     namespace: 'sensor'
 });
 
-function startTimer(socket)
+function startTimer(socket, data)
 {
     if (!timerRunning)
     {
         timerRunning = true;
-        intervalEvent = setInterval(requestData(socket), 1000);
+        intervalEvent = setInterval(requestData(socket, data), 1000);
     }
 }
 function stopTimer()
@@ -141,7 +141,7 @@ let timerRunning;
 let intervalEvent;
 server.listen(4811);
 
-function requestData(socket) {
+function requestData(socket, data) {
     //console.log(data);
     data.methods.forEach((element) => {
         socket.emit('request', {method: element});
@@ -151,7 +151,7 @@ function requestData(socket) {
 io.on('connection', function(socket){
     console.log('a client connected');
     // Verbindungen zu Raspberry Pi
-    socket.on('register', startTimer(socket));
+    socket.on('register', startTimer(socket, data));
     socket.on('responseSLED', function(data){
         console.log("responseSLED");
         console.log(data);
