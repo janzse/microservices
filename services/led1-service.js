@@ -43,6 +43,7 @@ bright2Subscriber.on('bright2', (request) => {
 
 function publishLed1Status(status)
 {
+    console.log("PUBLISH:", status);
     // dummy
     /*led_status = {
         description: 'Light status 1 changed',
