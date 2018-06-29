@@ -33,6 +33,7 @@ brightSubscriber.on('brightness-data', (brightness) => {
                 timestamp: new Date()
             };
             led2Publisher.publish('led2-changed', led_status);
+            lastState = brightness.value;
         }
     }
 });
