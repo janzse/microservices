@@ -142,7 +142,7 @@ let intervalEvent;
 server.listen(4811);
 
 function requestData(socket) {
-    console.log(data);
+    //console.log(data);
     data.methods.forEach((element) => {
         socket.emit('request', {method: element});
     });
