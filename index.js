@@ -221,7 +221,7 @@ io.on('connection', function(socket){
         }
         else
         {
-            led2Requester({type: 'led2-changed, id: id++, value: led_status});
+            led2Requester({type: 'led2-changed', id: id++, value: led_status});
         }
     });
     socket.on('responseDTemp', function(data){
