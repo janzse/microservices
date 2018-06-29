@@ -20,6 +20,7 @@ led2Responder.on('led2-set', (request) => {
         value: request.body.value,
         timestamp: new Date()
     };
+
 });
 
 function updateLed2()
