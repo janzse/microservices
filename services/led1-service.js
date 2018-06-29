@@ -22,7 +22,7 @@ let led_status;
 let dummyVal = false;
 
 led1Responder.on('led1-set', (request) => {
-    console.log(request.body);
+    console.log("set:",request.body);
     led_status = {
         description: 'Light status 1 changed',
         value: request.body.value,
@@ -31,7 +31,7 @@ led1Responder.on('led1-set', (request) => {
 });
 
 led1Responder.on('led1-changed', (request) => {
-    console.log(request.value);
+    console.log("changed:",request.value);
     publishLed1Status(request.value);
 });
 
