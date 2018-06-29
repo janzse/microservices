@@ -18,10 +18,10 @@ let temperature;
 temp1Responder.on('temp1-data', (request) => {
     //let temperature = Math.floor((Math.random() * 40) + Math.random() * 7);
     console.log(request);
-    temperature = request;
+    temperature = request.value;
     temp_status = {
         description: 'Temperature 1',
-        value: temperature,
+        value: request.value,
         timestamp: new Date()
     };
     temp1Publisher.publish('temp1-data', temp_status);

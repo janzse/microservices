@@ -19,7 +19,7 @@ temp2Responder.on('temp2-data', (request) => {
     temperature = request;
     temp_status = {
         description: 'Temperature 2',
-        value: temperature,
+        value: request.value,
         timestamp: new Date()
     };
     temp2Publisher.publish('temp1-data', temp_status);
