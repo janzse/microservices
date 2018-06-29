@@ -32,7 +32,8 @@ led1Responder.on('led1-set', (request) => {
 
 led1Responder.on('led1', (request) => {
     console.log("changed:",request.value);
-    publishLed1Status(request.value);
+    led1Publisher.publish('led1-changed', request.value);
+    //publishLed1Status(request.value);
 });
 
 let brightness;
@@ -52,7 +53,7 @@ function publishLed1Status(status)
     };
     dummyVal = !dummyVal;*/
     //if (status !== undefined)
-    led1Publisher.publish('led1-changed', status);
+    //led1Publisher.publish('led1-changed', status);
 }
 
 //setInterval(publishLed1Status, 1000);
