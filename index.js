@@ -82,9 +82,8 @@ app.post('/led1', function(req, res) {
 });
 
 app.post('/led2', function(req, res) {
-    led2Requester.send({type: 'led2-set', id: id++, body: req.body}, function(led) {
-        res.send(JSON.stringify({led: led}));
-    });
+    pi2Socket.emit('request', { method: "setLED", data: req.body.value});
+    res.send(JSON.stringify({status: "success"}));
 });
 
 let humid1Requester = new cote.Requester({
@@ -141,13 +140,19 @@ function stopTimer()
 let timerRunning;
 let intervalEvent;
 let pi1Socket;
+let pi2Socket;
 
 server.listen(4811);
 
 function requestData(socket, data) {
     //====================
-    // TODO DELETE
-    pi1Socket = socket;
+    // TODO
+    if(data.deviceID === 1) {
+        pi1Socket = socket;
+    } else if(data.deviceID === 2) {
+        pi2Socket = socket;
+    }
+
     //====================
 
     //console.log(data);
