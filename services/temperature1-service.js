@@ -23,7 +23,7 @@ temp1Responder.on('temp1-data', (request) => {
         value: temperature,
         timestamp: new Date()
     };
-    console.log(request);
+    //console.log(request);
     //temp1Publisher.publish('temp1-data', temp_status);
 });
 
@@ -36,9 +36,11 @@ function publishTemperature1()
         timestamp: new Date()
     };
     //console.log(temp_status);
-    if (temperature !== undefined)
+    if (temperature !== undefined) {
+        console.log('publish: ', temp_status);
         temp1Publisher.publish('temp1-data', temp_status);
-    //console.log('publish: ', temp_status);
+    }
+
 }
 
 setInterval(publishTemperature1, 1000);
