@@ -140,7 +140,8 @@ io.on('connection', function(socket){
         console.log(data);
     });
     socket.on('responseDTemp', function(data){
-        console.log('temp', data);
+        console.log("responseTemp");
+        console.log(data);
         nodeTempRequester.send({type: 'temp1-data', id: id++, value: data});
     });
     socket.on('responseDHum', function(data){
