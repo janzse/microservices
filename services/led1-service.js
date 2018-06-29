@@ -22,7 +22,6 @@ let led_status;
 let dummyVal = false;
 
 led1Responder.on('led1-set', (request) => {
-    console.log(request.body);
     led_status = {
         description: 'Light status 1 changed',
         value: request.body.value,

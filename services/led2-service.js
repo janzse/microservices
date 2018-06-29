@@ -13,26 +13,26 @@ const led2Publisher = new cote.Publisher({
 });
 
 let led_status;
-let state;
 
-led2Responder.on('led2-set', (request, callback) => {
-    state = request.body.value;
+led2Responder.on('led2-set', (request) => {
     led_status = {
-        description: 'Light status 1 changed',
+        description: 'Light status 2 changed',
         value: request.body.value,
         timestamp: new Date()
     };
-    callback(led_status);
 });
 
 function updateLed2()
 {
+    /*
     led_status = {
         description: 'Light status 1 changed',
         value: state,
         timestamp: new Date()
     };
-    led2Publisher.publish('led2-changed', led_status);
+    */
+    if (led_status !== undefined)
+        led2Publisher.publish('led2-changed', led_status);
 }
 
 setInterval(updateLed2, 1000);
