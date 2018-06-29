@@ -167,7 +167,7 @@ io.on('connection', function(socket){
                 const deviceID = data.deviceID;
                 const led_status = {
                     description: `Light status ${deviceID} changed`,
-                    value: data.response === "OK",
+                    value: data.value,
                     timestamp: new Date()
                 };
                 led1Requester.send({type: 'led1-changed', id: id++, value: led_status});
