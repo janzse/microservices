@@ -8,7 +8,7 @@ const alarmPublisher = new cote.Publisher({
 
 let temp2Subscriber = new cote.Subscriber({
     name: 'temperature 2 subscriber',
-    namespace: 'alarm',
+    namespace: 'temp2',
     respondsTo: ['temp2-data']
 });
 
