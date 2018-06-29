@@ -3,7 +3,7 @@ const cote = require('cote');
 const led1Responder = new cote.Responder({
     name: 'led 1 responder',
     namespace: 'sensor',
-    respondsTo: ['led1-set', 'led1-changed']
+    respondsTo: ['led1-set', 'led1']
 });
 
 const led1Publisher = new cote.Publisher({
@@ -30,7 +30,7 @@ led1Responder.on('led1-set', (request) => {
     };
 });
 
-led1Responder.on('led1-changed', (request) => {
+led1Responder.on('led1', (request) => {
     console.log("changed:",request.value);
     publishLed1Status(request.value);
 });
