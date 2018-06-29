@@ -151,6 +151,7 @@ let clients = 0;
 io.on('connection', function(socket){
     console.log('a client connected');
     clients++;
+    console.log("clients connected:", clients);
     // Verbindungen zu Raspberry Pi
     socket.on('register', (data) => startTimer(socket, data));
     socket.on('responseSLED', function(data){
@@ -186,8 +187,8 @@ io.on('connection', function(socket){
 
     socket.on('disconnect', function(){
         clients--;
-        console.log("clients:", clients);
         console.log('client disconnected');
+        console.log("clients connected:", clients);
         if (clients === 0 )
             stopTimer();
     });
