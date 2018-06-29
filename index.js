@@ -179,9 +179,9 @@ io.on('connection', function(socket){
             timestamp: new Date()
         };
         if(deviceID === 1) {
-            pi1Socket.emit('led1-changed', led_status)
+            socket.emit('led1-changed', led_status)
         } else if(deviceID === 2) {
-            pi2Socket.emit('led2-changed', led_status)
+            socket.emit('led2-changed', led_status)
         }
     });
     socket.on('responseLED', function(data){
