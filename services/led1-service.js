@@ -44,8 +44,7 @@ function publishLed1Status()
         timestamp: new Date()
     };
     dummyVal = !dummyVal;*/
-
-    if (led_status !== null)
+    if (led_status !== undefined)
         led1Publisher.publish('led1-changed', led_status);
 }
 
