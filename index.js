@@ -161,6 +161,22 @@ io.on('connection', function(socket){
         console.log("deviceID:", data.deviceID);
         if(data.deviceID === 1) {
             pi1Socket = socket;
+            pi1Socket.on('responseSLED', function(data){
+                console.log("responseSLED");
+                console.log(data);
+                const deviceID = data.deviceID;
+                const led_status = {
+                    description: `Light status ${deviceID} changed`,
+                    value: data.response,
+                    timestamp: new Date()
+                };
+                io.sockets.forEach((s => {
+                    s.emit(`led${deviceID}-changed`, led_status)
+                }))
+
+                console.log("ID:",deviceID);
+
+            });
 
         } else if(data.deviceID === 2) {
             pi2Socket = socket;
@@ -169,19 +185,7 @@ io.on('connection', function(socket){
         startTimer(socket, data);
 
     });
-    pi1Socket.on('responseSLED', function(data){
-        console.log("responseSLED");
-        console.log(data);
-        const deviceID = data.deviceID;
-        const led_status = {
-            description: `Light status ${deviceID} changed`,
-            value: data.response,
-            timestamp: new Date()
-        };
-        socket.emit(`led${deviceID}-changed`, led_status)
-        console.log("ID:",deviceID);
 
-    });
     socket.on('responseLED', function(data){
         console.log("responseLED");
         console.log(data);
