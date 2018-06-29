@@ -151,7 +151,7 @@ function requestData(socket, data) {
 io.on('connection', function(socket){
     console.log('a client connected');
     // Verbindungen zu Raspberry Pi
-    socket.on('register', startTimer(socket, data));
+    socket.on('register', (data) => startTimer(socket, data));
     socket.on('responseSLED', function(data){
         console.log("responseSLED");
         console.log(data);
