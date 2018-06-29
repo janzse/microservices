@@ -22,17 +22,3 @@ humid1Responder.on('humidity-data', function (request){
     };
     humid1Publisher.publish('humidity-data', humid_status);
 });
-
-function publishHumidity1()
-{/*
-    let humidity = Math.floor(Math.random() * (100 - 40) + (Math.random() * 50));
-    humid_status = {
-        description: 'Humidity',
-        value: humidity,
-        timestamp: new Date()
-    };
-    humid1Publisher.publish('humidity-data', humid_status);
-    */
-}
-
-//setInterval(publishHumidity1, 1000);

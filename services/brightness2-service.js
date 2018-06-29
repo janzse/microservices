@@ -22,16 +22,3 @@ bright2Responder.on('brightness-data', (request) => {
     };
     bright2Publisher.publish('brightness-data', bright_status);
 });
-
-function publishBrightness()
-{
-    let brightness = Math.floor(Math.random() * (255 - 200) + (Math.random() * 200));
-    bright_status = {
-        description: 'Brightness',
-        value: brightness,
-        timestamp: new Date()
-    };
-    //bright2Publisher.publish('brightness-data', bright_status);
-}
-
-//setInterval(publishBrightness, 1000);

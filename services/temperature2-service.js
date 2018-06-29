@@ -13,7 +13,6 @@ const temp2Publisher = new cote.Publisher({
 });
 
 let temp_status;
-let temperature;
 
 temp2Responder.on('temp2-data', (request) => {
     temp_status = {
@@ -23,13 +22,3 @@ temp2Responder.on('temp2-data', (request) => {
     };
     temp2Publisher.publish('temp2-data', temp_status);
 });
-
-function publishTemperature2()
-{
-    if (temperature !== undefined) {
-        console.log('publish: ', temp_status);
-        temp2Publisher.publish('temp1-data', temp_status);
-    }
-}
-
-//setInterval(publishTemperature2, 1000);
