@@ -18,20 +18,21 @@ let brightSubscriber = new cote.Subscriber({
     respondsTo: ['bright2']
 });
 
-let led_status;
-
 led2Responder.on('led2-set', (request) => {
     console.log("changed:",request.value);
     led2Publisher.publish('led2-changed', request.value);
 });
 
+let lastState;
 brightSubscriber.on('brightness-data', (brightness) => {
     if (brightness.value <= 200) {
-        led_status = {
-            description: 'Light status 2 changed',
-            value: true,
-            timestamp: new Date()
-        };
-        led2Publisher.publish('led2-changed', led_status);
+        if(brightness.value !== lastState) {
+            let led_status = {
+                description: 'Light status 2 changed',
+                value: true,
+                timestamp: new Date()
+            };
+            led2Publisher.publish('led2-changed', led_status);
+        }
     }
 });

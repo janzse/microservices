@@ -12,10 +12,8 @@ let bright2Publisher = new cote.Publisher({
     broadcasts: ['brightness-data']
 });
 
-let bright_status;
-
 bright2Responder.on('brightness-data', (request) => {
-    bright_status = {
+    let bright_status = {
         description: 'Brightness',
         value: request.value,
         timestamp: new Date()

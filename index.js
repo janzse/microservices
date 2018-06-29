@@ -9,70 +9,13 @@ const app = require('express')(),
 app.use(bodyParser.json());
 app.use(cors());
 
+/*
 app.get('/', function(req, res) {
     res.sendFile(__dirname + '/index.html');
 });
+*/
 
 let id = 0;
-
-app.get('/home', function(req, res) {
-    let data = [];
-
-    let req_led1 = {type: 'led1-set', id: id++};
-    led1Requester.send(req_led1, (led) => {
-        data.push({led1: led});
-    });
-
-    let req_led2 = {type: 'led2-set', id: id++};
-    led2Requester.send(req_led2, (led) => {
-        data.push({led2: led});
-    });
-
-    let req_temp1 = {type: 'temp1-data', id: id++};
-    temp1Requester.send(req_temp1, (temp) => {
-        data.push({temp1: {value: temp}});
-    });
-
-    let req_temp2 = {type: 'temp2-data', id: id++};
-    temp2Requester.send(req_temp2, (temp) => {
-        data.push({temp2: {value: temp}});
-    });
-
-    let req_humid1 = {type: 'humidity-data', id: id++};
-    humid1Requester.send(req_humid1, (humid) => {
-        data.push({humid1: {value: humid}});
-    });
-
-    let req_bright2 = {type: 'brightness-data', id: id++};
-    bright2Requester.send(req_bright2, (bright) => {
-        data.push({bright2: {value: bright}});
-        res.send(JSON.stringify({data: data}));
-    });
-});
-
-app.get('/humid1', function(req, res) {
-    humid1Requester.send({type: 'humidity-data', id: id++}, function(humid) {
-        res.send(JSON.stringify({humidity: humid}));
-    });
-});
-
-app.get('/bright2', function(req, res) {
-    bright2Requester.send({type: 'brightness-data', id: id++}, function(bright) {
-        res.send(JSON.stringify({brightness: bright}));
-    });
-});
-
-app.get('/temp1', function(req, res) {
-    temp1Requester.send({type: 'temp1-data', id: id++}, function(temp) {
-        res.send(JSON.stringify({temperature1: temp}));
-    });
-});
-
-app.get('/temp2', function(req, res) {
-    temp2Requester.send({type: 'temp2-data', id: id++}, function(temp) {
-        res.send(JSON.stringify({temperature2: temp}));
-    });
-});
 
 app.post('/led1', function(req, res) {
     //led1Requester.send({type: 'led1-set', id: id++, body: req.body, socket: pi1Socket});
@@ -121,7 +64,7 @@ let nodeTempRequester = new cote.Requester({
     namespace: 'sensor'
 });
 
-function startTimer(socket, data)
+function startTimer()
 {
     if (!timerRunning)
     {
@@ -146,7 +89,7 @@ let dataPi2;
 server.listen(4811);
 
 function requestData() {
-    //console.log(data);
+
     if (dataPi1 && pi1Socket) {
         dataPi1.methods.forEach((element) => {
             pi1Socket.emit('request', {method: element});
@@ -164,88 +107,59 @@ function requestData() {
 io.on('connection', function(socket){
     console.log('a client connected');
     console.log("clients connected:", Object.keys(io.sockets.connected).length);
+
     // Verbindungen zu Raspberry Pi
     socket.on('register', (data) => {
-        //====================
-        // TODO
         console.log("deviceID:", data.deviceID);
         if(data.deviceID === 1) {
-            console.log("register==================================================");
             pi1Socket = socket;
             dataPi1 = data;
             pi1Socket.on('responseSLED', function(data){
-                console.log("responseSLED****************************************");
-                console.log(data);
-                const deviceID = data.deviceID;
                 const led_status = {
                     description: `Light status 1 changed`,
                     value: data.value,
                     timestamp: new Date()
                 };
                 led1Requester.send({type: 'led1-set', id: id++, value: led_status});
-                //socket.broadcast.emit(`led1-changed`, led_status);
-                console.log("ID:",deviceID);
-                console.log("led_status:",led_status);
-
             });
 
         } else if(data.deviceID === 2) {
             pi2Socket = socket;
             dataPi2 = data;
             pi2Socket.on('responseSLED', function(data){
-                console.log("responseSLED2****************************************");
-                console.log(data);
-                const deviceID = data.deviceID;
                 const led_status = {
                     description: `Light status 2 changed`,
                     value: data.value,
                     timestamp: new Date()
                 };
                 led2Requester.send({type: 'led2-set', id: id++, value: led_status});
-                //socket.broadcast.emit(`led1-changed`, led_status);
-                console.log("ID:",deviceID);
-                console.log("led_status:",led_status);
-
             });
         }
-        //====================
-        startTimer(socket, data);
-
+        startTimer();
     });
 
     socket.on('responseLED', function(data){
-        //console.log("responseLED");
-        //console.log(data);
         if(data.deviceID === 1) {
             led1Requester.send({type: 'led1-changed', id: id++, value: data.response});
         }
-        else
-        {
+        else {
             led2Requester.send({type: 'led2-changed', id: id++, value: data.response});
         }
     });
-    socket.on('responseDTemp', function(data){
-        console.log("responseTemp");
-        console.log(data);
+    socket.on('responseDTemp', function(data) {
         temp2Requester.send({type: 'temp2-data', id: id++, value: data.response});
     });
-    socket.on('responseDHum', function(data){
-        //console.log("responseDHum");
-        //console.log(data);
+    socket.on('responseDHum', function(data) {
         humid1Requester.send({type: 'humidity-data', id: id++, value: data.response});
     });
-    socket.on('responseCLux', function(data){
-        console.log("responseCLux");
-        console.log(data);
+    socket.on('responseCLux', function(data) {
         bright2Requester.send({type: 'brightness-data', id: id++, value: data.response});
     });
-    socket.on('responseCTemp', function(data){
-        console.log("responseCTemp");
-        console.log(data);
+    socket.on('responseCTemp', function(data) {
         temp1Requester.send({type: 'temp1-data', id: id++, value: data.response});
     });
 
-    socket.on('error', function(err){
+    socket.on('error', function(err) {
         console.log(err);
     });
 
@@ -255,44 +169,7 @@ io.on('connection', function(socket){
             stopTimer();
     });
 });
-/*
-{ methods:
-   [ 'setLED',
-     'getLED',
-     'readDHT22Temperature',
-     'readDHT22Humidity' ] }
-
-*/
-
-
-/*
-io.on('register', function(data){
-    console.log(data);
-});
-*/
 
 new cote.Sockend(io, {
     name: 'client sockend server'
 });
-
-/*
- // Make sure this returns the socketio
-
-//app.set('socketIo', io);
-
-//app.use('./', require('./routes'));
-
-app.route('/test').get(function (req, res) {
-    let socket = req.app.get('socketIo');
-    socket.emit('hello', 'world');
-    res.end();
-});
-
-io.sockets.on('connection', function(socket){
-    socket.emit('test', 1);
-});
-
-module.exports = app;
-
-console.log("HTTP-Server is running on", "http://localhost:4811");
-*/

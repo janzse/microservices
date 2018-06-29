@@ -12,10 +12,8 @@ const humid1Publisher = new cote.Publisher({
     broadcasts: ['humidity-data']
 });
 
-let humid_status;
-
 humid1Responder.on('humidity-data', function (request){
-    humid_status = {
+    let humid_status = {
         description: 'Humidity',
         value: request.value,
         timestamp: new Date()

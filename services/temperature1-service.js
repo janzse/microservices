@@ -12,14 +12,8 @@ const temp1Publisher = new cote.Publisher({
     broadcasts: ['temp1-data']
 });
 
-let temp_status;
-let temperature;
-
 temp1Responder.on('temp1-data', (request) => {
-
-    console.log(request);
-    temperature = request.value;
-    temp_status = {
+    let temp_status = {
         description: 'Temperature 1',
         value: request.value,
         timestamp: new Date()
