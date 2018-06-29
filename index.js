@@ -59,11 +59,6 @@ let led2Requester = new cote.Requester({
     namespace: 'led2'
 });
 
-let nodeTempRequester = new cote.Requester({
-    name: 'node 1 temp requester',
-    namespace: 'sensor'
-});
-
 function startTimer()
 {
     if (!timerRunning)
@@ -110,7 +105,6 @@ io.on('connection', function(socket){
 
     // Verbindungen zu Raspberry Pi
     socket.on('register', (data) => {
-        console.log("deviceID:", data.deviceID);
         if(data.deviceID === 1) {
             pi1Socket = socket;
             dataPi1 = data;
