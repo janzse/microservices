@@ -169,11 +169,8 @@ io.on('connection', function(socket){
                     description: `Light status ${deviceID} changed`,
                     value: data.response,
                     timestamp: new Date()
-                };/*
-                io.sockets.forEach((s => {
-                    s.emit(`led${deviceID}-changed`, led_status)
-                }))*/
-                socket.broadcast.emit(`led${deviceID}-changed`, led_status);
+                };
+                socket.broadcast.emit(`led1-changed`, led_status);
                 console.log("ID:",deviceID);
 
             });
