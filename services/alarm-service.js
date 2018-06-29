@@ -3,7 +3,7 @@ const cote = require('cote');
 const alarmPublisher = new cote.Publisher({
     name: 'alarm publisher',
     namespace: 'alarm',
-    broadcasts: ['alarm-data']
+    broadcasts: ['alarm']
 });
 
 let temp2Subscriber = new cote.Subscriber({
@@ -20,6 +20,6 @@ temp2Subscriber.on('temp2-data', (temperature) => {
             value: temperature.value,
             timestamp: new Date()
         };
-        alarmPublisher.publish('alarm-data', temp_status);
+        alarmPublisher.publish('alarm', temp_status);
     }
 });
