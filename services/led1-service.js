@@ -12,17 +12,9 @@ const led1Publisher = new cote.Publisher({
     broadcasts: ['led1-changed']
 });
 
-const bright2Subscriber = new cote.Subscriber({
-    name: 'brightness 2 subscriber',
-    namespace: 'sensor',
-    subscribesTo: ['bright2']
-})
-
 let led_status;
-let dummyVal = false;
 
 led1Responder.on('led1-set', (request) => {
-    console.log("set:",request.body);
     led_status = {
         description: 'Light status 1 changed',
         value: request.body.value,
@@ -33,18 +25,11 @@ led1Responder.on('led1-set', (request) => {
 led1Responder.on('led1', (request) => {
     console.log("changed:",request.value);
     led1Publisher.publish('led1-changed', request.value);
-    //publishLed1Status(request.value);
-});
-
-let brightness;
-
-bright2Subscriber.on('bright2', (request) => {
-    brightness = request;
 });
 
 function publishLed1Status(status)
 {
-    console.log("PUBLISH:", status);
+    //console.log("PUBLISH:", status);
     // dummy
     /*led_status = {
         description: 'Light status 1 changed',

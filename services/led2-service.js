@@ -20,7 +20,6 @@ led2Responder.on('led2-set', (request) => {
         value: request.body.value,
         timestamp: new Date()
     };
-
 });
 
 led2Responder.on('led2', (request) => {
@@ -37,8 +36,8 @@ function updateLed2()
         timestamp: new Date()
     };
     */
-    if (led_status !== undefined)
-        led2Publisher.publish('led2-changed', led_status);
+    //if (led_status !== undefined)
+        //led2Publisher.publish('led2-changed', led_status);
 }
 
 //setInterval(updateLed2, 1000);
