@@ -147,8 +147,10 @@ server.listen(4811);
 function requestData(socket, data) {
     //====================
     // TODO
+    console.log("deviceID:", data.deviceID);
     if(data.deviceID === 1) {
         pi1Socket = socket;
+
     } else if(data.deviceID === 2) {
         pi2Socket = socket;
     }
