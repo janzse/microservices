@@ -22,7 +22,7 @@ temp2Responder.on('temp2-data', (request) => {
         value: request.value,
         timestamp: new Date()
     };
-    temp2Publisher.publish('temp1-data', temp_status);
+    temp2Publisher.publish('temp2-data', temp_status);
 });
 
 function publishTemperature2()
