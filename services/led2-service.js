@@ -24,13 +24,8 @@ led2Responder.on('led2-set', (request) => {
 });
 
 led2Responder.on('led2', (request) => {
-    console.log("set:",request.body);
-    led_status = {
-        description: 'Light status 2 changed',
-        value: request.body.value,
-        timestamp: new Date()
-    };
-    led2Publisher.publish('led2-changed', led_status);
+    console.log("changed:",request.value);
+    led2Publisher.publish('led2-changed', request.value);
 });
 
 function updateLed2()
