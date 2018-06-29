@@ -160,9 +160,10 @@ io.on('connection', function(socket){
         // TODO
         console.log("deviceID:", data.deviceID);
         if(data.deviceID === 1) {
+            console.log("register==================================================");
             pi1Socket = socket;
             pi1Socket.on('responseSLED', function(data){
-                console.log("responseSLED");
+                console.log("responseSLED****************************************");
                 console.log(data);
                 const deviceID = data.deviceID;
                 const led_status = {

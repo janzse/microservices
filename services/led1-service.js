@@ -54,4 +54,4 @@ function publishLed1Status(status)
         led1Publisher.publish('led1-changed', status);
 }
 
-setInterval(publishLed1Status, 1000);
+//setInterval(publishLed1Status, 1000);
