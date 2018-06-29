@@ -12,18 +12,14 @@ let temp2Subscriber = new cote.Subscriber({
     respondsTo: ['temp2-data']
 });
 
-let state;
 temp2Subscriber.on('temp2-data', (temperature) => {
+    console.log(temperature);
     if (temperature.value > 25) {
-        if (state !== temperature.value) {
-            let temp_status = {
-                description: 'Alarm',
-                value: temperature.value,
-                timestamp: new Date()
-            };
-            console.log(temp_status);
-            alarmPublisher.publish('alarm-data', temp_status);
-            state = temperature.value;
-        }
+        let temp_status = {
+            description: 'Alarm',
+            value: temperature.value,
+            timestamp: new Date()
+        };
+        alarmPublisher.publish('alarm-data', temp_status);
     }
 });
