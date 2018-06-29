@@ -7,7 +7,7 @@ const app = require('express')(),
     cote = require('cote');
 
 app.use(bodyParser.json());
-app.use(cors);
+app.use(cors());
 
 app.get('/', function(req, res) {
     res.sendFile(__dirname + '/index.html');
