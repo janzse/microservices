@@ -182,7 +182,7 @@ io.on('connection', function(socket){
             pi2Socket = socket;
 
             pi2Socket.on('responseSLED', function(data){
-                console.log("responseSLED****************************************");
+                console.log("responseSLED2****************************************");
                 console.log(data);
                 const deviceID = data.deviceID;
                 const led_status = {
