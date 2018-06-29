@@ -173,7 +173,7 @@ io.on('connection', function(socket){
                 io.sockets.forEach((s => {
                     s.emit(`led${deviceID}-changed`, led_status)
                 }))*/
-                io.sockets.emit(`led${deviceID}-changed`, led_status);
+                socket.broadcast.emit(`led${deviceID}-changed`, led_status);
                 console.log("ID:",deviceID);
 
             });
