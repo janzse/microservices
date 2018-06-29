@@ -147,11 +147,10 @@ function requestData(socket, data) {
         socket.emit('request', {method: element});
     });
 }
-let clients = 0;
+
 io.on('connection', function(socket){
     console.log('a client connected');
     clients++;
-    console.log("sockets:", io.sockets)
     console.log("clients connected:", Object.keys(io.sockets.connected).length);
     // Verbindungen zu Raspberry Pi
     socket.on('register', (data) => startTimer(socket, data));
@@ -187,10 +186,8 @@ io.on('connection', function(socket){
     });
 
     socket.on('disconnect', function(){
-        clients--;
         console.log('client disconnected');
-        console.log("clients connected:", clients);
-        if (clients === 0 )
+        if (Object.keys(io.sockets.connected).length <= 0 )
             stopTimer();
     });
 });
