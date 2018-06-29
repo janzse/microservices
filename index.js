@@ -180,6 +180,22 @@ io.on('connection', function(socket){
 
         } else if(data.deviceID === 2) {
             pi2Socket = socket;
+
+            pi2Socket.on('responseSLED', function(data){
+                console.log("responseSLED****************************************");
+                console.log(data);
+                const deviceID = data.deviceID;
+                const led_status = {
+                    description: `Light status ${deviceID} changed`,
+                    value: data.value,
+                    timestamp: new Date()
+                };
+                led1Requester.send({type: 'led2', id: id++, value: led_status});
+                //socket.broadcast.emit(`led1-changed`, led_status);
+                console.log("ID:",deviceID);
+                console.log("led_status:",led_status);
+
+            });
         }
         //====================
         startTimer(socket, data);
@@ -187,26 +203,26 @@ io.on('connection', function(socket){
     });
 
     socket.on('responseLED', function(data){
-        console.log("responseLED");
-        console.log(data);
+        //console.log("responseLED");
+        //console.log(data);
 
     });
     socket.on('responseDTemp', function(data){
-        console.log("responseTemp");
-        console.log(data);
+        //console.log("responseTemp");
+        //console.log(data);
         nodeTempRequester.send({type: 'temp2-data', id: id++, value: data});
     });
     socket.on('responseDHum', function(data){
-        console.log("responseDHum");
-        console.log(data);
+        //console.log("responseDHum");
+        //console.log(data);
     });
     socket.on('responseCLux', function(data){
-        console.log("responseCLux");
-        console.log(data);
+        //console.log("responseCLux");
+        //console.log(data);
     });
     socket.on('responseCTemp', function(data){
-        console.log("responseCTemp");
-        console.log(data);
+        //console.log("responseCTemp");
+        //console.log(data);
         nodeTempRequester.send({type: 'temp1-data', id: id++, value: data});
     });
 

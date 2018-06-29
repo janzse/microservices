@@ -3,7 +3,7 @@ const cote = require('cote');
 const led2Responder = new cote.Responder({
     name: 'led service 2',
     namespace: 'sensor',
-    respondsTo: ['led2-set']
+    respondsTo: ['led2-set', 'led2']
 });
 
 const led2Publisher = new cote.Publisher({
@@ -23,6 +23,16 @@ led2Responder.on('led2-set', (request) => {
 
 });
 
+led2Responder.on('led2', (request) => {
+    console.log("set:",request.body);
+    led_status = {
+        description: 'Light status 2 changed',
+        value: request.body.value,
+        timestamp: new Date()
+    };
+    led2Publisher.publish('led2-changed', led_status);
+});
+
 function updateLed2()
 {
     /*
@@ -36,4 +46,4 @@ function updateLed2()
         led2Publisher.publish('led2-changed', led_status);
 }
 
-setInterval(updateLed2, 1000);
+//setInterval(updateLed2, 1000);
