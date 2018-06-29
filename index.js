@@ -186,6 +186,7 @@ io.on('connection', function(socket){
 
     socket.on('disconnect', function(){
         clients--;
+        console.log("clients:", clients);
         console.log('client disconnected');
         if (clients === 0 )
             stopTimer();
