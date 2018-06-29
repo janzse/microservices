@@ -217,32 +217,32 @@ io.on('connection', function(socket){
         //console.log("responseLED");
         //console.log(data);
         if(data.deviceID === 1) {
-            led1Requester({type: 'led1-changed', id: id++, value: led_status});
+            led1Requester({type: 'led1-changed', id: id++, value: data.response});
         }
         else
         {
-            led2Requester({type: 'led2-changed', id: id++, value: led_status});
+            led2Requester({type: 'led2-changed', id: id++, value: data.response});
         }
     });
     socket.on('responseDTemp', function(data){
         //console.log("responseTemp");
         //console.log(data);
-        temp2Requester.send({type: 'temp2-data', id: id++, value: data});
+        temp2Requester.send({type: 'temp2-data', id: id++, value: data.response});
     });
     socket.on('responseDHum', function(data){
         //console.log("responseDHum");
         //console.log(data);
-        humid1Requester.send({type: 'humidity-data', id: id++, value: data});
+        humid1Requester.send({type: 'humidity-data', id: id++, value: data.response});
     });
     socket.on('responseCLux', function(data){
         //console.log("responseCLux");
         //console.log(data);
-        bright2Requester.send({type: 'brightness-data', id: id++, value: data});
+        bright2Requester.send({type: 'brightness-data', id: id++, value: data.response});
     });
     socket.on('responseCTemp', function(data){
         //console.log("responseCTemp");
         //console.log(data);
-        temp1Requester.send({type: 'temp1-data', id: id++, value: data});
+        temp1Requester.send({type: 'temp1-data', id: id++, value: data.response});
     });
 
     socket.on('error', function(err){
