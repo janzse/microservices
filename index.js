@@ -221,7 +221,7 @@ io.on('connection', function(socket){
     socket.on('responseDTemp', function(data){
         //console.log("responseTemp");
         //console.log(data);
-        nodeTempRequester.send({type: 'temp2-data', id: id++, value: data});
+        temp2Requester.send({type: 'temp2-data', id: id++, value: data});
     });
     socket.on('responseDHum', function(data){
         //console.log("responseDHum");
@@ -234,7 +234,7 @@ io.on('connection', function(socket){
     socket.on('responseCTemp', function(data){
         //console.log("responseCTemp");
         //console.log(data);
-        nodeTempRequester.send({type: 'temp1-data', id: id++, value: data});
+        temp1Requester.send({type: 'temp1-data', id: id++, value: data});
     });
 
     socket.on('error', function(err){
