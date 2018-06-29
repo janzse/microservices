@@ -216,7 +216,13 @@ io.on('connection', function(socket){
     socket.on('responseLED', function(data){
         //console.log("responseLED");
         //console.log(data);
-
+        if(data.deviceID === 1) {
+            led1Requester({type: 'led1-changed', id: id++, value: led_status});
+        }
+        else
+        {
+            led2Requester({type: 'led2-changed, id: id++, value: led_status});
+        }
     });
     socket.on('responseDTemp', function(data){
         //console.log("responseTemp");
@@ -226,10 +232,12 @@ io.on('connection', function(socket){
     socket.on('responseDHum', function(data){
         //console.log("responseDHum");
         //console.log(data);
+        humid1Requester.send({type: 'humidity-data', id: id++, value: data});
     });
     socket.on('responseCLux', function(data){
         //console.log("responseCLux");
         //console.log(data);
+        bright2Requester.send({type: 'brightness-data', id: id++, value: data});
     });
     socket.on('responseCTemp', function(data){
         //console.log("responseCTemp");

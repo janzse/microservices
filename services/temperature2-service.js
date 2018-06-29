@@ -13,26 +13,24 @@ const temp2Publisher = new cote.Publisher({
 });
 
 let temp_status;
+let temperature;
 
-temp2Responder.on('temp2-data', (request, callback) => {
-    let temperature = Math.floor((Math.random() * 40) + Math.random() * 7);
-    temp_status = {
-        description: 'Temperature 1',
-        value: temperature,
-        timestamp: new Date()
-    };
-    callback(temp_status);
-});
-
-function publishTemperature2()
-{
-    let temperature = Math.floor((Math.random() * 40) + Math.random() * 7);
+temp2Responder.on('temp2-data', (request) => {
+    temperature = request.value.response;
     temp_status = {
         description: 'Temperature 2',
         value: temperature,
         timestamp: new Date()
     };
-    temp2Publisher.publish('temp2-data', temp_status);
+    temp2Publisher.publish('temp1-data', temp_status);
+});
+
+function publishTemperature2()
+{
+    if (temperature !== undefined) {
+        console.log('publish: ', temp_status);
+        temp2Publisher.publish('temp1-data', temp_status);
+    }
 }
 
-setInterval(publishTemperature2, 1000);
+//setInterval(publishTemperature2, 1000);

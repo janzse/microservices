@@ -13,18 +13,16 @@ const led1Publisher = new cote.Publisher({
 });
 
 let led_status;
-/*
-led1Responder.on('led1-set', (request) => {
-    led_status = {
-        description: 'Light status 1 changed',
-        value: request.body.value,
-        timestamp: new Date()
-    };
-});
-*/
+let val;
+
+let lastState;
 led1Responder.on('led1-set', (request) => {
     console.log("changed:",request.value);
-    led1Publisher.publish('led1-changed', request.value);
+    if(request.value !== lastState) {
+        led1Publisher.publish('led1-changed', request.value);
+        lastState = request.value;
+    }
+
 });
 
 function publishLed1Status(status)
