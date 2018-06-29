@@ -170,6 +170,7 @@ io.on('connection', function(socket){
                     value: data.response === "OK",
                     timestamp: new Date()
                 };
+                led1Requester.send({type: 'led1-set', id: id++, value: led_status});
                 socket.broadcast.emit(`led1-changed`, led_status);
                 console.log("ID:",deviceID);
                 console.log("led_status:",led_status);
