@@ -107,12 +107,12 @@ let temp2Requester = new cote.Requester({
 });
 
 let led1Requester = new cote.Requester({
-    name: 'led1 1 requester',
+    name: 'led 1 requester',
     namespace: 'sensor'
 });
 
 let led2Requester = new cote.Requester({
-    name: 'led1 2 requester',
+    name: 'led 2 requester',
     namespace: 'sensor'
 });
 
