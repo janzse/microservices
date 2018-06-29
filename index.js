@@ -172,6 +172,7 @@ io.on('connection', function(socket){
                 };
                 socket.broadcast.emit(`led1-changed`, led_status);
                 console.log("ID:",deviceID);
+                console.log("led_status:",led_status);
 
             });
 
