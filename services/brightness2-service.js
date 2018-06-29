@@ -14,15 +14,13 @@ let bright2Publisher = new cote.Publisher({
 
 let bright_status;
 
-bright2Responder.on('brightness-data', (request, callback) => {
-    // helligkeit abfragen
-    let brightness = Math.floor(Math.random() * (255 - 200) + (Math.random() * 200));
+bright2Responder.on('brightness-data', (request) => {
     bright_status = {
         description: 'Brightness',
-        value: brightness,
+        value: request.value,
         timestamp: new Date()
     };
-    callback(brightness);
+    bright2Publisher.publish('brightness-data', bright_status);
 });
 
 function publishBrightness()
@@ -33,7 +31,7 @@ function publishBrightness()
         value: brightness,
         timestamp: new Date()
     };
-    bright2Publisher.publish('brightness-data', bright_status);
+    //bright2Publisher.publish('brightness-data', bright_status);
 }
 
-setInterval(publishBrightness, 1000);
+//setInterval(publishBrightness, 1000);

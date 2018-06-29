@@ -14,19 +14,17 @@ const humid1Publisher = new cote.Publisher({
 
 let humid_status;
 
-humid1Responder.on('humidity-data', function (request, callback){
-    // Luftfeuchtigkeit abfragen
-    let humidity = Math.floor(Math.random() * (100 - 40) + (Math.random() * 50));
+humid1Responder.on('humidity-data', function (request){
     humid_status = {
         description: 'Humidity',
-        value: humidity,
+        value: request.value,
         timestamp: new Date()
     };
-    callback(humidity);
+    humid1Publisher.publish('humidity-data', humid_status);
 });
 
 function publishHumidity1()
-{
+{/*
     let humidity = Math.floor(Math.random() * (100 - 40) + (Math.random() * 50));
     humid_status = {
         description: 'Humidity',
@@ -34,6 +32,7 @@ function publishHumidity1()
         timestamp: new Date()
     };
     humid1Publisher.publish('humidity-data', humid_status);
+    */
 }
 
-setInterval(publishHumidity1, 1000);
+//setInterval(publishHumidity1, 1000);

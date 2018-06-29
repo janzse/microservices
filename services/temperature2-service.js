@@ -16,7 +16,6 @@ let temp_status;
 let temperature;
 
 temp2Responder.on('temp2-data', (request) => {
-    temperature = request;
     temp_status = {
         description: 'Temperature 2',
         value: request.value,
