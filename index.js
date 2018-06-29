@@ -172,10 +172,6 @@ io.on('connection', function(socket){
     socket.on('responseSLED', function(data){
         console.log("responseSLED");
         console.log(data);
-    });
-    socket.on('responseLED', function(data){
-        console.log("responseLED");
-        console.log(data);
         const deviceID = data.deviceID;
         const led_status = {
             description: `Light status ${deviceID} changed`,
@@ -187,6 +183,11 @@ io.on('connection', function(socket){
         } else if(deviceID === 2) {
             pi2Socket.emit('led2-changed', led_status)
         }
+    });
+    socket.on('responseLED', function(data){
+        console.log("responseLED");
+        console.log(data);
+
     });
     socket.on('responseDTemp', function(data){
         console.log("responseTemp");
