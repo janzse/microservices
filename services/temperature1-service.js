@@ -21,7 +21,7 @@ temp1Responder.on('temp1-data', (request) => {
         value: temperature,
         timestamp: new Date()
     };
-    console.log(temp_status);
+    console.log(request);
     //temp1Publisher.publish('temp1-data', temp_status);
 });
 
