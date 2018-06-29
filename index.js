@@ -88,32 +88,32 @@ app.post('/led2', function(req, res) {
 
 let humid1Requester = new cote.Requester({
     name: 'humidity 1 requester',
-    namespace: 'sensor'
+    namespace: 'humidity'
 });
 
 let bright2Requester = new cote.Requester({
     name: 'brightness 2 requester',
-    namespace: 'sensor'
+    namespace: 'brightness'
 });
 
 let temp1Requester = new cote.Requester({
     name: 'temperature 1 requester',
-    namespace: 'sensor'
+    namespace: 'temp1'
 });
 
 let temp2Requester = new cote.Requester({
     name: 'temperature 2 requester',
-    namespace: 'sensor'
+    namespace: 'temp2'
 });
 
 let led1Requester = new cote.Requester({
     name: 'led 1 requester',
-    namespace: 'sensor'
+    namespace: 'led1'
 });
 
 let led2Requester = new cote.Requester({
     name: 'led 2 requester',
-    namespace: 'sensor'
+    namespace: 'led2'
 });
 
 let nodeTempRequester = new cote.Requester({
@@ -182,7 +182,7 @@ io.on('connection', function(socket){
                     value: data.value,
                     timestamp: new Date()
                 };
-                led1Requester.send({type: 'led1', id: id++, value: led_status});
+                led1Requester.send({type: 'led1-set', id: id++, value: led_status});
                 //socket.broadcast.emit(`led1-changed`, led_status);
                 console.log("ID:",deviceID);
                 console.log("led_status:",led_status);
@@ -201,7 +201,7 @@ io.on('connection', function(socket){
                     value: data.value,
                     timestamp: new Date()
                 };
-                led2Requester.send({type: 'led2', id: id++, value: led_status});
+                led2Requester.send({type: 'led2-set', id: id++, value: led_status});
                 //socket.broadcast.emit(`led1-changed`, led_status);
                 console.log("ID:",deviceID);
                 console.log("led_status:",led_status);
