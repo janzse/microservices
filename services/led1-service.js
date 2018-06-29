@@ -41,7 +41,7 @@ bright2Subscriber.on('bright2', (request) => {
     brightness = request;
 });
 
-function publishLed1Status()
+function publishLed1Status(status)
 {
     // dummy
     /*led_status = {
@@ -50,8 +50,8 @@ function publishLed1Status()
         timestamp: new Date()
     };
     dummyVal = !dummyVal;*/
-    if (led_status !== undefined)
-        led1Publisher.publish('led1-changed', led_status);
+    if (status !== undefined)
+        led1Publisher.publish('led1-changed', status);
 }
 
 setInterval(publishLed1Status, 1000);
