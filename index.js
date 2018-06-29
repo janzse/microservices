@@ -145,18 +145,6 @@ let pi2Socket;
 server.listen(4811);
 
 function requestData(socket, data) {
-    //====================
-    // TODO
-    console.log("deviceID:", data.deviceID);
-    if(data.deviceID === 1) {
-        pi1Socket = socket;
-
-    } else if(data.deviceID === 2) {
-        pi2Socket = socket;
-    }
-
-    //====================
-
     //console.log(data);
     data.methods.forEach((element) => {
         socket.emit('request', {method: element});
@@ -167,7 +155,20 @@ io.on('connection', function(socket){
     console.log('a client connected');
     console.log("clients connected:", Object.keys(io.sockets.connected).length);
     // Verbindungen zu Raspberry Pi
-    socket.on('register', (data) => startTimer(socket, data));
+    socket.on('register', (data) => {
+        //====================
+        // TODO
+        console.log("deviceID:", data.deviceID);
+        if(data.deviceID === 1) {
+            pi1Socket = socket;
+
+        } else if(data.deviceID === 2) {
+            pi2Socket = socket;
+        }
+        //====================
+        startTimer(socket, data);
+
+    });
     socket.on('responseSLED', function(data){
         console.log("responseSLED");
         console.log(data);
