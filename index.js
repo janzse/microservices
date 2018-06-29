@@ -1,3 +1,5 @@
+import cors from 'cors';
+
 const app = require('express')(),
     bodyParser = require('body-parser'),
     server = require('http').Server(app),
@@ -5,6 +7,7 @@ const app = require('express')(),
     cote = require('cote');
 
 app.use(bodyParser.json());
+app.use(cors);
 
 app.get('/', function(req, res) {
     res.sendFile(__dirname + '/index.html');
