@@ -169,7 +169,7 @@ io.on('connection', function(socket){
         startTimer(socket, data);
 
     });
-    socket.on('responseSLED', function(data){
+    pi1Socket.on('responseSLED', function(data){
         console.log("responseSLED");
         console.log(data);
         const deviceID = data.deviceID;
