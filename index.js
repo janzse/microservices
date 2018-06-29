@@ -126,7 +126,7 @@ function startTimer(socket, data)
     if (!timerRunning)
     {
         timerRunning = true;
-        intervalEvent = setInterval(() => requestData(socket, data), 3000);
+        intervalEvent = setInterval(() => requestData(), 3000);
     }
 }
 function stopTimer()
@@ -141,15 +141,25 @@ let timerRunning;
 let intervalEvent;
 let pi1Socket;
 let pi2Socket;
-
+let dataPi1;
+let dataPi2;
 server.listen(4811);
 
-function requestData(socket, data) {
+function requestData() {
     //console.log(data);
-    data.methods.forEach((element) => {
-        socket.emit('request', {method: element});
-    });
+    if (dataPi1 && pi1Socket) {
+        dataPi1.methods.forEach((element) => {
+            pi1Socket.emit('request', {method: element});
+        });
+    }
+
+    if(dataPi2 && pi2Socket) {
+        dataPi2.methods.forEach((element) => {
+            pi2Socket.emit('request', {method: element});
+        })
+    }
 }
+
 
 io.on('connection', function(socket){
     console.log('a client connected');
@@ -162,6 +172,7 @@ io.on('connection', function(socket){
         if(data.deviceID === 1) {
             console.log("register==================================================");
             pi1Socket = socket;
+            dataPi1 = data;
             pi1Socket.on('responseSLED', function(data){
                 console.log("responseSLED****************************************");
                 console.log(data);
@@ -180,7 +191,7 @@ io.on('connection', function(socket){
 
         } else if(data.deviceID === 2) {
             pi2Socket = socket;
-
+            dataPi2 = data;
             pi2Socket.on('responseSLED', function(data){
                 console.log("responseSLED2****************************************");
                 console.log(data);
