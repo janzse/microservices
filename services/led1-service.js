@@ -22,14 +22,13 @@ let led_status;
 let dummyVal = false;
 let state;
 
-led1Responder.on('led1-set', (request, callback) => {
+led1Responder.on('led1-set', (request) => {
     state = request.body.value;
     led_status = {
         description: 'Light status 1 changed',
         value: request.body.value,
         timestamp: new Date()
     };
-    callback(led_status);
 });
 
 let brightness;
@@ -43,11 +42,13 @@ function publishLed1Status()
     // dummy
     led_status = {
         description: 'Light status 1 changed',
-        value: state,
+        value: true,
         timestamp: new Date()
     };
     dummyVal = !dummyVal;
-    led1Publisher.publish('led1-changed', dummyVal);
+
+    if (led_status !== null)
+        led1Publisher.publish('led1-changed', led_status);
 }
 
 setInterval(publishLed1Status, 1000);
