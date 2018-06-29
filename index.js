@@ -235,8 +235,8 @@ io.on('connection', function(socket){
         humid1Requester.send({type: 'humidity-data', id: id++, value: data.response});
     });
     socket.on('responseCLux', function(data){
-        //console.log("responseCLux");
-        //console.log(data);
+        console.log("responseCLux");
+        console.log(data);
         bright2Requester.send({type: 'brightness-data', id: id++, value: data.response});
     });
     socket.on('responseCTemp', function(data){
