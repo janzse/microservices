@@ -21,6 +21,7 @@ temp2Subscriber.on('temp2-data', (temperature) => {
                 value: temperature.value,
                 timestamp: new Date()
             };
+            console.log(temp_status);
             alarmPublisher.publish('temp2-data', temp_status);
             state = temperature.value;
         }
