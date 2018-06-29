@@ -17,7 +17,7 @@ let temperature;
 
 temp1Responder.on('temp1-data', (request) => {
     //let temperature = Math.floor((Math.random() * 40) + Math.random() * 7);
-    temperature = request.response.value;
+    temperature = request.value.response;
     temp_status = {
         description: 'Temperature 1',
         value: temperature,
