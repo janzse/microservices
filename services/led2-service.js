@@ -1,13 +1,13 @@
 const cote = require('cote');
 
 const led2Responder = new cote.Responder({
-    name: 'led service 2',
+    name: 'led 2 responder',
     namespace: 'sensor',
     respondsTo: ['led2-set', 'led2']
 });
 
 const led2Publisher = new cote.Publisher({
-    name: 'led service 2',
+    name: 'led 2 publisher',
     namespace: 'sensor',
     broadcasts: ['led2-changed']
 });
