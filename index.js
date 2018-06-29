@@ -125,6 +125,7 @@ io.on('connection', function(socket){
     // Verbindungen zu Raspberry Pi
     socket.on('register', function(data){
         console.log(data);
+        //let startTimer = true;
         data.methods.forEach((element) => {
             socket.emit('request', {method: element});
         });
