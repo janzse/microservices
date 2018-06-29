@@ -32,15 +32,21 @@ led2Responder.on('led2-set', (request) => {
     console.log("changed:",request.value);
     led2Publisher.publish('led2-changed', request.value);
 });
-
+let oldValue;
 brightSubscriber.on('brightness-data', (brightness) => {
     if (brightness.value <= 210) {
-        led_status = {
-            description: 'Light status 2 changed',
-            value: true,
-            timestamp: new Date()
-        };
-        led2Publisher.publish('led2-changed', led_status);
+        if (oldValue === undefined)
+            oldValue = brightness.value; // first time check
+
+        if (oldValue !== brightness.value) {
+            led_status = {
+                description: 'Light status 2 changed',
+                value: true,
+                timestamp: new Date()
+            };
+            led2Publisher.publish('led2-changed', led_status);
+            oldValue = brightness.value;
+        }
     }
 });
 
