@@ -178,7 +178,7 @@ io.on('connection', function(socket){
                 console.log(data);
                 const deviceID = data.deviceID;
                 const led_status = {
-                    description: `Light status ${deviceID} changed`,
+                    description: `Light status 1 changed`,
                     value: data.value,
                     timestamp: new Date()
                 };
@@ -197,7 +197,7 @@ io.on('connection', function(socket){
                 console.log(data);
                 const deviceID = data.deviceID;
                 const led_status = {
-                    description: `Light status ${deviceID} changed`,
+                    description: `Light status 2 changed`,
                     value: data.value,
                     timestamp: new Date()
                 };
