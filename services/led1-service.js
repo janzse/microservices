@@ -28,6 +28,7 @@ led1Responder.on('led1-set', (request) => {
         value: request.body.value,
         timestamp: new Date()
     };
+    request.socket.emit('request', { method: "setLED", data: request.body.value});
 });
 
 let brightness;

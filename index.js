@@ -75,7 +75,7 @@ app.get('/temp2', function(req, res) {
 });
 
 app.post('/led1', function(req, res) {
-    led1Requester.send({type: 'led1-set', id: id++, body: req.body});
+    led1Requester.send({type: 'led1-set', id: id++, body: req.body, socket: pi1Socket});
     console.log(req.body);
     res.send(JSON.stringify({status: "success"}));
 });
@@ -139,9 +139,16 @@ function stopTimer()
 }
 let timerRunning;
 let intervalEvent;
+let pi1Socket;
+
 server.listen(4811);
 
 function requestData(socket, data) {
+    //====================
+    // TODO DELETE
+    pi1Socket = socket;
+    //====================
+
     //console.log(data);
     data.methods.forEach((element) => {
         socket.emit('request', {method: element});
