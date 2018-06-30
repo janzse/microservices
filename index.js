@@ -141,7 +141,7 @@ io.on('connection', function(socket){
         }
     });
     socket.on('responseDTemp', function(data) {
-        temp2Requester.send({type: 'temp2-data', id: id++, value: data.response});
+        temp1Requester.send({type: 'temp1-data', id: id++, value: data.response});
     });
     socket.on('responseDHum', function(data) {
         humid1Requester.send({type: 'humidity-data', id: id++, value: data.response});
@@ -150,7 +150,7 @@ io.on('connection', function(socket){
         bright2Requester.send({type: 'brightness-data', id: id++, value: data.response});
     });
     socket.on('responseCTemp', function(data) {
-        temp1Requester.send({type: 'temp1-data', id: id++, value: data.response});
+        temp2Requester.send({type: 'temp2-data', id: id++, value: data.response});
     });
 
     socket.on('error', function(err) {
