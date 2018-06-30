@@ -13,7 +13,6 @@ let temp2Subscriber = new cote.Subscriber({
 });
 
 temp2Subscriber.on('temp2-data', (temperature) => {
-    console.log(temperature);
     if (temperature.value >= 30) {
         let alarm_status = {
             description: 'Alarm',
