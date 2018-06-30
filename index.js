@@ -59,6 +59,11 @@ let led2Requester = new cote.Requester({
     namespace: 'led2'
 });
 
+let alarmRequester = new cote.Requester({
+    name: 'alarm requester',
+    namespace: 'alarm'
+});
+
 function startTimer()
 {
     if (!timerRunning)

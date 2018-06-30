@@ -1,5 +1,11 @@
 const cote = require('cote');
 
+const alarmResponder = new cote.Responder({
+    name: 'alarm responder',
+    namespace: 'alarm',
+    respondsTo: ['alarm-data']
+});
+
 const alarmPublisher = new cote.Publisher({
     name: 'alarm publisher',
     namespace: 'alarm',
@@ -11,6 +17,8 @@ let temp2Subscriber = new cote.Subscriber({
     namespace: 'temp2',
     respondsTo: ['temp2-data']
 });
+
+alarmResponder.on('alarm-data');
 
 temp2Subscriber.on('temp2-data', (temperature) => {
     if (temperature.value >= 30) {
