@@ -23,17 +23,17 @@ led2Responder.on('led2-set', (request) => {
     led2Publisher.publish('led2-changed', request.value);
 });
 
-let lastState;
+let triggeredAlarm = false;
 brightSubscriber.on('brightness-data', (brightness) => {
-    if (brightness.value <= 200) {
-        if(brightness.value !== lastState) {
-            let led_status = {
-                description: 'Light status 2 changed',
-                value: true,
-                timestamp: new Date()
-            };
-            led2Publisher.publish('led2-changed', led_status);
-            lastState = brightness.value;
-        }
+    if (brightness.value <= 200 && triggeredAlarm === false) {
+        let led_status = {
+            description: 'Light status 2 changed',
+            value: true,
+            timestamp: new Date()
+        };
+        led2Publisher.publish('led2-changed', led_status);
+        triggeredAlarm = true;
     }
+    else if (brightness.value > 200 && triggeredAlarm === true)
+        triggeredAlarm = false;
 });
