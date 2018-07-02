@@ -9,16 +9,9 @@ const app = require('express')(),
 app.use(bodyParser.json());
 app.use(cors());
 
-/*
-app.get('/', function(req, res) {
-    res.sendFile(__dirname + '/index.html');
-});
-*/
-
 let id = 0;
 
 app.post('/led1', function(req, res) {
-    //led1Requester.send({type: 'led1-set', id: id++, body: req.body, socket: pi1Socket});
     console.log(req.body);
     pi1Socket.emit('request', { method: "setLED", data: req.body.value});
     res.send(JSON.stringify({status: "success"}));
